@@ -153,6 +153,7 @@ class TypingAnimation {
     constructor() {
         this.heroText = document.querySelector('.hero-intro');
         this.cursor = document.querySelector('.hero-cursor');
+        this.heroContainer = document.querySelector('.hero-text');
         this.replayBtn = document.querySelector('.replay-btn');
         this.baseText = 'Hello, my name is Claire. I am ';
         this.roles = ['instructor', 'designer', 'developer'];
@@ -288,7 +289,7 @@ class TypingAnimation {
             roleSpan.className = 'scratched-out';
             roleSpan.textContent = article + lastRole;
 
-            // Replace the text with base + scratched span
+            // Replace the text with base + scratched span (cursor remains as separate sibling)
             this.heroText.innerHTML = this.baseText + roleSpan.outerHTML;
 
             // Animate the scratch line
@@ -341,11 +342,12 @@ class TypingAnimation {
                     <path class="handwritten-path" d="M363.47,59.89c.48,3.21.99,7.31,1.31,10.54.24-2.34-.33-3.26,0-5.59.27-1.92,1.37-4.41,2.96-6.07.58-.61,1.51-1.35,2.34-1.47.65-.09,1.85-.24,2.39-.2.43.03,1.66.49,1.72.92"/>
                     <path class="handwritten-path" d="M388.7,32.31c4.06,8.95,2.97,19.31,4.92,28.95"/>
                     <path class="handwritten-path" d="M394.44,73.99c-.13.2-.07.5.12.63"/>
+                    <circle class="handwritten-path" cx="396" cy="80" r="1.5"/>
                 </svg>
             `;
 
-            // Position below the scratched out text
-            this.heroText.appendChild(svgContainer);
+            // Position below the scratched out text, after the hero-intro span but before cursor
+            this.heroContainer.insertBefore(svgContainer, this.cursor);
 
             // Start the handwriting animation
             this.animateHandwriting(svgContainer, resolve);
@@ -389,7 +391,8 @@ class TypingAnimation {
             [14], // l
             [15], // v
             [16], // e
-            [17] // r
+            [17], // r
+            [18] // ! (exclamation mark dot)
         ];
 
         // Debug: Show path count vs expected
