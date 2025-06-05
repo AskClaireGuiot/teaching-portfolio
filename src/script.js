@@ -360,35 +360,79 @@ class TypingAnimation {
             const pathLength = path.getTotalLength();
             path.style.strokeDasharray = pathLength;
             path.style.strokeDashoffset = pathLength;
+
+            console.log(`Path ${index}: ready`);
         });
 
-        // Go back to simple sequential animation that was working in debug mode
-        let currentPath = 0;
+        // Debug: Log total number of paths
+        console.log(`Total paths found: ${paths.length}`);
 
-        const animateNextPath = () => {
-            if (currentPath >= paths.length) {
+        // Let me create a more accurate grouping based on visual inspection
+        // For "human problem solver" - grouping paths that form complete letters
+        const letterGroups = [
+            [0], // h
+            [1], // u
+            [2], // m
+            [3], // a
+            [4], // n
+            [], // space
+            [5], // p
+            [6], // r
+            [7], // o
+            [8], // b
+            [9], // l
+            [10], // e
+            [11], // m
+            [], // space
+            [12], // s
+            [13], // o
+            [14], // l
+            [15], // v
+            [16], // e
+            [17] // r
+        ];
+
+        // Debug: Show path count vs expected
+        console.log(`Expected paths for grouping: ${letterGroups.flat().length}, Actual paths: ${paths.length}`);
+
+        let currentGroup = 0;
+
+        const animateNextLetter = () => {
+            if (currentGroup >= letterGroups.length) {
                 resolve();
                 return;
             }
 
-            const path = paths[currentPath];
+            const pathIndices = letterGroups[currentGroup];
 
-            if (path) {
-                // Variable speed: make some paths faster/slower
-                const duration = (currentPath % 3 === 0) ? 0.25 : 0.35;
-                path.style.transition = `stroke-dashoffset ${duration}s ease-out`;
-                path.style.strokeDashoffset = '0';
+            // If it's a space (empty group), just delay and continue
+            if (pathIndices.length === 0) {
+                currentGroup++;
+                setTimeout(animateNextLetter, 100); // Space delay
+                return;
             }
 
-            currentPath++;
+            console.log(`Drawing letter ${currentGroup}:`, pathIndices);
 
-            // Variable delay: pause longer every few strokes to simulate letter spacing
-            const delay = (currentPath % 5 === 0) ? 200 : 60;
-            setTimeout(animateNextPath, delay);
+            // Animate all paths in this letter group
+            pathIndices.forEach((pathIndex, strokeIndex) => {
+                const path = paths[pathIndex];
+                if (path) {
+                    setTimeout(() => {
+                        path.style.transition = 'stroke-dashoffset 0.2s ease-out';
+                        path.style.strokeDashoffset = '0';
+                    }, strokeIndex * 30);
+                }
+            });
+
+            currentGroup++;
+
+            // Faster timing between letters
+            setTimeout(animateNextLetter, 180);
         };
 
-        // Start immediately
-        animateNextPath();
+        // Start the letter-by-letter animation
+        animateNextLetter();
     }
 
     replayAnimation() {

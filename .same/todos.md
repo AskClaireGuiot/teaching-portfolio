@@ -31,6 +31,9 @@
 - [x] Positioned handwriting below the scratched text
 - [x] Optimized timing delays for natural flow
 - [x] Create proper footer with social links
+- [x] Changed handwriting color to blue (#0b42db)
+- [x] Connected project to GitHub repository 'teaching-portfolio'
+- [x] Committed all changes and pushed to main branch
 - [ ] Run accessibility audit (in_progress)
 - [ ] Test responsiveness on different screen sizes
 - [ ] Final cleanup and optimization
