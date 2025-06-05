@@ -289,8 +289,8 @@ class TypingAnimation {
             roleSpan.className = 'scratched-out';
             roleSpan.textContent = article + lastRole;
 
-            // Replace the text with base + scratched span (cursor remains as separate sibling)
-            this.heroText.innerHTML = this.baseText + roleSpan.outerHTML;
+            // Replace the text with base + scratched span + cursor on same line
+            this.heroText.innerHTML = this.baseText + roleSpan.outerHTML + '<span class="hero-cursor" aria-hidden="true">|</span>';
 
             // Animate the scratch line
             setTimeout(() => {
@@ -342,12 +342,11 @@ class TypingAnimation {
                     <path class="handwritten-path" d="M363.47,59.89c.48,3.21.99,7.31,1.31,10.54.24-2.34-.33-3.26,0-5.59.27-1.92,1.37-4.41,2.96-6.07.58-.61,1.51-1.35,2.34-1.47.65-.09,1.85-.24,2.39-.2.43.03,1.66.49,1.72.92"/>
                     <path class="handwritten-path" d="M388.7,32.31c4.06,8.95,2.97,19.31,4.92,28.95"/>
                     <path class="handwritten-path" d="M394.44,73.99c-.13.2-.07.5.12.63"/>
-                    <circle class="handwritten-path" cx="396" cy="80" r="1.5"/>
                 </svg>
             `;
 
-            // Position below the scratched out text, after the hero-intro span but before cursor
-            this.heroContainer.insertBefore(svgContainer, this.cursor);
+            // Add handwriting as a line break below the text, cursor stays on the text line
+            this.heroText.innerHTML += '<br>' + svgContainer.outerHTML;
 
             // Start the handwriting animation
             this.animateHandwriting(svgContainer, resolve);
@@ -391,8 +390,7 @@ class TypingAnimation {
             [14], // l
             [15], // v
             [16], // e
-            [17], // r
-            [18] // ! (exclamation mark dot)
+            [17] // r
         ];
 
         // Debug: Show path count vs expected
@@ -440,6 +438,13 @@ class TypingAnimation {
 
     replayAnimation() {
         if (this.isAnimating) return;
+
+        // Clear any existing handwriting SVG
+        const existingSVG = this.heroContainer.querySelector('.handwritten-svg-container');
+        if (existingSVG) {
+            existingSVG.remove();
+        }
+
         // Reset text to basic structure before replaying
         this.heroText.innerHTML = '';
         this.startAnimation();
