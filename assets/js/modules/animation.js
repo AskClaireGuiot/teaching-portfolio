@@ -15,7 +15,7 @@ export class TypingAnimation {
         this.heroContainer = document.querySelector('.hero-text');
         this.replayBtn = document.querySelector('.replay-btn');
         this.heroVideo = document.querySelector('.hero-video');
-        this.roles = ['an instructor', 'a designer', 'a developer'];
+        this.roles = ['n instructor', ' designer', ' developer'];
         this.currentRoleIndex = 0;
         this.typeSpeed = 50;
         this.deleteSpeed = 30;
@@ -33,7 +33,7 @@ export class TypingAnimation {
 
     getBaseText() {
         const isMobile = window.innerWidth <= 768;
-        return isMobile ? 'Hello, my name is Claire.\nI am ' : 'Hello, my name is Claire. I am ';
+        return isMobile ? 'Hello, my name is Claire.\nI am a' : 'Hello, my name is Claire. I am a';
     }
 
     updateTextFormat() {
@@ -331,16 +331,16 @@ export class TypingAnimation {
                 let baseDuration;
                 if (pathLength < 50) {
                     // Very short strokes (dots, small marks)
-                    baseDuration = 0.2;
+                    baseDuration = 0.1;
                 } else if (pathLength < 150) {
                     // Short to medium strokes
-                    baseDuration = Math.max(0.35, pathLength / 350);
+                    baseDuration = Math.max(0.2, pathLength / 350);
                 } else if (pathLength < 300) {
                     // Medium strokes
-                    baseDuration = Math.max(0.5, pathLength / 300);
+                    baseDuration = Math.max(0.3, pathLength / 300);
                 } else {
                     // Long, complex strokes
-                    baseDuration = Math.max(0.7, pathLength / 250);
+                    baseDuration = Math.max(0.4, pathLength / 250);
                 }
 
                 // Adjust timing based on device performance
@@ -355,11 +355,11 @@ export class TypingAnimation {
                 setTimeout(() => {
                     currentPathIndex++;
                     animateNextPath();
-                }, duration * 1000 + 80); // Comfortable buffer for natural timing
+                }, duration * 1000 + 60); // Comfortable buffer for natural timing
             };
 
             // Start animation after a brief delay - natural timing
-            setTimeout(animateNextPath, 150);
+            setTimeout(animateNextPath, 100);
 
         } catch (error) {
             console.error('Error animating handwriting:', error);

@@ -35,61 +35,51 @@ get_header(); ?>
     <!-- Video Loading Placeholder -->
     <div class="hero-video-placeholder" aria-hidden="true"></div>
 
-    <h2 id="hero-heading" class="hero-text text-heading-1">
+    <h1 id="hero-heading" class="hero-text text-heading-1">
         <?php
         $hero_title = get_theme_mod('hero_title', 'Hello, my name is Claire. I am an instructor');
         $hero_roles = get_theme_mod('hero_roles', 'an instructor, a designer, a developer');
         ?>
         <span class="hero-intro"><?php echo esc_html($hero_title); ?></span>
         <span class="hero-cursor" aria-hidden="true">|</span>
-    </h2>
+    </h1>
     <button class="replay-btn" aria-label="<?php _e('Replay typing animation', 'claire-portfolio'); ?>">
-        <span><?php _e('REPLAY ANIMATION', 'claire-portfolio'); ?></span>
+        <span class="material-icons" aria-hidden="true">play_arrow</span> <span><?php _e('REPLAY ANIMATION', 'claire-portfolio'); ?></span>
     </button>
 </section>
 
 <!-- Mission Statement Section -->
 <section class="mission" aria-labelledby="mission-heading">
-    <div class="mission-container">
-        <div class="mission-content">
-            <div class="mission-left">
-                <h2 id="mission-heading" class="text-heading-2">
-                    <?php
-                    $mission_title = get_theme_mod('mission_title', 'Meaningful, human-centered learning experiences across physical and digital spaces');
-                    echo wp_kses_post($mission_title);
-                    ?>
-                </h2>
-            </div>
-            <div class="mission-right">
+    <div class="mission-content">
+        <div class="mission-left">
+            <h2 id="mission-heading" class="text-heading-2">
                 <?php
-                $mission_text = get_theme_mod('mission_text', '');
-                if ($mission_text) {
-                    echo wp_kses_post($mission_text);
-                } else {
-                    // Default mission text
+                $mission_title = get_theme_mod('mission_title', 'Meaningful, human-centered learning experiences across physical and digital spaces');
+                echo wp_kses_post($mission_title);
                 ?>
-                    <p class="mission-text text-body-large">
-                        <?php _e('Whether designing a course, a client website or a 3D installation, I focus on creating <strong>purposeful interactions</strong> that connect people to the emotions, knowledge, and frameworks they need.', 'claire-portfolio'); ?>
-                    </p>
-                    <p class="mission-text text-body-large">
-                        <?php _e('As a post-secondary educator, I am inspired by the diverse paths my students take as they unlock their potential. This curiosity fuels my commitment to blending <strong>technology, human connection, and inclusive design</strong> to shape transformative learning experiences.', 'claire-portfolio'); ?>
-                    </p>
-                <?php
-                }
-                ?>
-            </div>
+            </h2>
         </div>
-        <div class="mission-tags">
+        <div class="mission-right">
             <?php
-            $mission_tags = get_theme_mod('mission_tags', 'STRATEGY,CONTENT,CREATIVITY,TECHNOLOGY');
-            $tags = explode(',', $mission_tags);
-            foreach ($tags as $tag) {
-                if (trim($tag)) {
-                    echo '<span class="tag">' . esc_html(trim($tag)) . '</span>';
-                }
+            $mission_text = get_theme_mod('mission_text', '');
+            if ($mission_text) {
+                echo wp_kses_post($mission_text);
+            } else {
+                // Default mission text
+            ?>
+                <p class="mission-text text-body-large">
+                    <?php _e('Whether designing a course, a client website or a 3D installation, I focus on creating <strong>purposeful interactions</strong> that connect people to the emotions, knowledge, and frameworks they need.', 'claire-portfolio'); ?>
+                </p>
+                <p class="mission-text text-body-large">
+                    <?php _e('As a post-secondary educator, I am inspired by the diverse paths my students take as they unlock their potential. This curiosity fuels my commitment to blending <strong>technology, human connection, and inclusive design</strong> to shape transformative learning experiences.', 'claire-portfolio'); ?>
+                </p>
+            <?php
             }
             ?>
         </div>
+    </div>
+    <div class="mission-tags">
+        <span class="tag">STRATEGY</span>|<span class="tag">CONTENT</span>|<span class="tag">CREATIVITY</span>|<span class="tag">TECHNOLOGY</span>.<span class="tag">PEOPLE-FIRST</span>.
     </div>
 </section>
 
@@ -147,7 +137,7 @@ get_header(); ?>
         $contact_page = get_page_by_path('contact');
         if ($contact_page) :
         ?>
-            <a href="<?php echo esc_url(get_permalink($contact_page)); ?>" class="cta-button">
+            <a href="<?php echo esc_url(get_permalink($contact_page)); ?>" class="button">
                 <span><?php _e('GET IN TOUCH', 'claire-portfolio'); ?></span>
             </a>
         <?php endif; ?>
