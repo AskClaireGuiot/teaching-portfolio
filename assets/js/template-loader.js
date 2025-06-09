@@ -65,44 +65,44 @@ class TemplateLoader {
         }
     }
 
-    setActiveNavLink() {
-        // Wait a bit for templates to be loaded
-        setTimeout(() => {
-            try {
-                const currentPath = window.location.pathname;
-                const navLinks = document.querySelectorAll('.nav-link');
+//     setActiveNavLink() {
+//         // Wait a bit for templates to be loaded
+//         setTimeout(() => {
+//             try {
+//                 const currentPath = window.location.pathname;
+//                 const navLinks = document.querySelectorAll('.nav-link');
 
-                for (const link of navLinks) {
-                    link.classList.remove('active');
-                    link.removeAttribute('aria-current');
+//                 for (const link of navLinks) {
+//                     link.classList.remove('active');
+//                     link.removeAttribute('aria-current');
 
-                    const href = link.getAttribute('href');
-                    if (this.isActiveLink(href, currentPath)) {
-                        link.classList.add('active');
-                        link.setAttribute('aria-current', 'page');
-                    }
-                }
-            } catch (error) {
-                console.error('Error setting active nav link:', error);
-            }
-        }, 100);
-    }
+//                     const href = link.getAttribute('href');
+//                     if (this.isActiveLink(href, currentPath)) {
+//                         link.classList.add('active');
+//                         link.setAttribute('aria-current', 'page');
+//                     }
+//                 }
+//             } catch (error) {
+//                 console.error('Error setting active nav link:', error);
+//             }
+//         }, 100);
+//     }
 
-    isActiveLink(href, currentPath) {
-        // Normalize paths for comparison
-        const normalizedHref = href?.toLowerCase() || '';
-        const normalizedPath = currentPath.toLowerCase();
+//     isActiveLink(href, currentPath) {
+//         // Normalize paths for comparison
+//         const normalizedHref = href?.toLowerCase() || '';
+//         const normalizedPath = currentPath.toLowerCase();
 
-        return (
-            normalizedHref === normalizedPath ||
-            (normalizedPath === '/' && normalizedHref === '/') ||
-            (normalizedPath.includes('/teaching') && normalizedHref === '/teaching') ||
-            (normalizedPath.includes('/case-study') && normalizedHref === '/case-study.html') ||
-            (normalizedPath.includes('/about') && normalizedHref === '/about') ||
-            (normalizedPath.includes('/contact') && normalizedHref === '/contact')
-        );
-    }
-}
+//         return (
+//             normalizedHref === normalizedPath ||
+//             (normalizedPath === '/' && normalizedHref === '/') ||
+//             (normalizedPath.includes('/teaching') && normalizedHref === '/teaching') ||
+//             (normalizedPath.includes('/case-study') && normalizedHref === '/case-study.html') ||
+//             (normalizedPath.includes('/about') && normalizedHref === '/about') ||
+//             (normalizedPath.includes('/contact') && normalizedHref === '/contact')
+//         );
+//     }
+ }
 
 // Auto-initialize when DOM is ready
 if (document.readyState === 'loading') {

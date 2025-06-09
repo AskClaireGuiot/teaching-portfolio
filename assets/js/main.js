@@ -3,6 +3,8 @@
  * Coordinates all modules and initializes the application
  */
 
+alert('Hello from the book store');
+
 // Import all modules
 import { MobileNavigation, HeaderScrollEffect } from './modules/navigation.js';
 import { TypingAnimation } from './modules/animation.js';
