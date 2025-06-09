@@ -89,7 +89,7 @@ export class AccessibilityEnhancements {
 
     enhanceKeyboardNavigation() {
         // Handle navigation menu keyboard interaction
-        const navLinks = document.querySelectorAll('.nav-menu a');
+        const navLinks = document.querySelectorAll('.nav-link');
 
         for (let index = 0; index < navLinks.length; index++) {
             const link = navLinks[index];

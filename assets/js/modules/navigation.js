@@ -54,7 +54,7 @@ export class MobileNavigation {
         }, 250));
 
         // Handle navigation link clicks
-        for (const link of this.navMenu.querySelectorAll('.nav-menu a')) {
+        for (const link of this.navMenu.querySelectorAll('.nav-link')) {
             link.addEventListener('click', () => {
                 if (this.isOpen) {
                     this.closeMenu();
@@ -77,7 +77,7 @@ export class MobileNavigation {
         this.navMenu.classList.add('active');
 
         // Focus first menu item
-        const firstMenuItem = this.navMenu.querySelector('.nav-menu a');
+        const firstMenuItem = this.navMenu.querySelector('.nav-link');
         if (firstMenuItem) {
             firstMenuItem.focus();
         }

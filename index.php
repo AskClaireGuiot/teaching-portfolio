@@ -1,178 +1,141 @@
 <?php
-/* The main template file */
-get_header() ?>
+/**
+ * Main Template File
+ *
+ * This is the main template file, used when no more specific template can be found.
+ * It can be used for blog posts, archives, or as a fallback for the front page.
+ *
+ * @package Claire_Portfolio
+ * @since 1.0.0
+ */
 
-<!-- Main Content -->
+get_header(); ?>
 
-<main id="main-content" class="main" role="main">
-    <?php
-    if (have_posts()) :
+<div class="content-area">
+    <div class="site-main">
 
-        if (is_front_page()) :
-    ?>
-            <!-- Hero Section -->
-            <section class="hero" aria-labelledby="hero-heading">
-                <!-- Background Video -->
-                <video
-                    class="hero-video"
-                    autoplay
-                    muted
-                    playsinline
-                    aria-hidden="true"
-                    preload="metadata">
-                    <source src="/hero-video.mp4" type="video/mp4">
-                    <!-- Fallback for browsers that don't support video -->
-                    Your browser does not support the video tag.
-                </video>
-                <!-- Video Loading Placeholder -->
-                <div class="hero-video-placeholder" aria-hidden="true"></div>
+        <?php if (is_home() && !is_front_page()) : ?>
+            <!-- Blog Page Header -->
+            <header class="page-header">
+                <h1 class="page-title text-heading-1">
+                    <?php _e('Latest Posts', 'claire-portfolio'); ?>
+                </h1>
+            </header>
+        <?php endif; ?>
 
-                <h2 id="hero-heading" class="hero-text text-heading-1">
-                    <span class="hero-intro">Hello, my name is Claire. I am an instructor</span>
-                    <span class="hero-cursor" aria-hidden="true">|</span>
-                </h2>
-                <button class="replay-btn" aria-label="Replay typing animation">
-                    <span>REPLAY ANIMATION</span>
-                </button>
-            </section>
+        <?php if (have_posts()) : ?>
 
-            <!-- Mission Statement Section -->
-            <section class="mission" aria-labelledby="mission-heading">
-                <div class="mission-container">
-                    <div class="mission-content">
-                        <div class="mission-left">
-                            <h2 id="mission-heading" class="text-heading-2">
-                                Meaningful, human-centered learning experiences across physical and digital spaces
-                            </h2>
+            <div class="posts-container">
+                <?php while (have_posts()) : the_post(); ?>
+
+                    <article id="post-<?php the_ID(); ?>" <?php post_class('post-preview'); ?>>
+
+                        <?php if (has_post_thumbnail()) : ?>
+                            <div class="post-thumbnail">
+                                <a href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+                                    <?php the_post_thumbnail('medium_large', array('alt' => get_the_title())); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="post-content">
+                            <header class="entry-header">
+                                <h2 class="entry-title text-heading-3">
+                                    <a href="<?php the_permalink(); ?>" rel="bookmark">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </h2>
+
+                                <div class="entry-meta text-caption">
+                                    <time class="published" datetime="<?php echo get_the_date('c'); ?>">
+                                        <?php echo get_the_date(); ?>
+                                    </time>
+
+                                    <?php if (get_the_category()) : ?>
+                                        <span class="categories-links">
+                                            <?php _e('in', 'claire-portfolio'); ?>
+                                            <?php the_category(', '); ?>
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
+                            </header>
+
+                            <div class="entry-summary text-body">
+                                <?php the_excerpt(); ?>
+                            </div>
+
+                            <footer class="entry-footer">
+                                <a href="<?php the_permalink(); ?>" class="read-more-link">
+                                    <span><?php _e('READ MORE', 'claire-portfolio'); ?></span>
+                                </a>
+                            </footer>
                         </div>
-                        <div class="mission-right">
-                            <p class="mission-text text-body-large">
-                                Whether designing a course, a client website or a 3D installation, I focus on creating
-                                <strong>purposeful interactions</strong> that connect people to the emotions, knowledge, and
-                                frameworks they need.
-                            </p>
-                            <p class="mission-text text-body-large">
-                                As a post-secondary educator, I am inspired by the diverse paths my students take as they
-                                unlock their potential. This curiosity fuels my commitment to blending <strong>technology,
-                                    human connection, and inclusive design</strong> to shape transformative learning experiences.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="mission-tags">
-                        <span class="tag">STRATEGY</span>
-                        <span class="tag">CONTENT</span>
-                        <span class="tag">CREATIVITY</span>
-                        <span class="tag">TECHNOLOGY</span>
-                        <span class="tag">PEOPLE-FIRST</span>
-                    </div>
-                </div>
-            </section>
+                    </article>
 
-            <!-- Teaching Section -->
-            <section class="teaching" aria-labelledby="teaching-heading">
-                <div class="teaching-container">
-                    <div class="teaching-header">
-                        <span class="section-label">TEACHING</span>
-                        <h2 id="teaching-heading" class="text-heading-2">
-                            Set the stage for inspired learning
-                        </h2>
-                        <p class="teaching-intro text-body-large text-secondary">
-                            As an instructor with one foot in post-secondary, and the other in the tech industry,
-                            I try to approach each learning experience with a design thinking mindset: empathize,
-                            define, ideate, prototype, test and iterate.
+                <?php endwhile; ?>
+            </div>
+
+            <?php
+            // Pagination
+            the_posts_pagination(array(
+                'mid_size' => 2,
+                'prev_text' => __('Previous', 'claire-portfolio'),
+                'next_text' => __('Next', 'claire-portfolio'),
+                'screen_reader_text' => __('Posts navigation', 'claire-portfolio')
+            ));
+            ?>
+
+        <?php else : ?>
+
+            <section class="no-results not-found">
+                <header class="page-header">
+                    <h1 class="page-title text-heading-2">
+                        <?php _e('Nothing here', 'claire-portfolio'); ?>
+                    </h1>
+                </header>
+
+                <div class="page-content">
+                    <?php if (is_home() && current_user_can('publish_posts')) : ?>
+
+                        <p class="text-body">
+                            <?php
+                            printf(
+                                wp_kses(
+                                    __('Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'claire-portfolio'),
+                                    array(
+                                        'a' => array(
+                                            'href' => array(),
+                                        ),
+                                    )
+                                ),
+                                esc_url(admin_url('post-new.php'))
+                            );
+                            ?>
                         </p>
-                    </div>
 
-                    <div class="teaching-grid">
-                        <div class="teaching-column">
-                            <h3 class="text-heading-3">How I teach:</h3>
+                    <?php elseif (is_search()) : ?>
 
-                            <div class="teaching-item">
-                                <span class="material-icons teaching-icon" aria-hidden="true">groups</span>
-                                <div class="teaching-content">
-                                    <h4 class="item-title text-heading-4">Inclusive learning community</h4>
-                                    <p class="text-body text-secondary">
-                                        I create spaces that prioritize honesty, relationship-building, and mutual support so
-                                        students can share their unique voices.
-                                    </p>
-                                </div>
-                            </div>
+                        <p class="text-body">
+                            <?php _e('Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'claire-portfolio'); ?>
+                        </p>
 
-                            <div class="teaching-item">
-                                <span class="material-icons teaching-icon" aria-hidden="true">devices</span>
-                                <div class="teaching-content">
-                                    <h4 class="item-title text-heading-4">Technology-enabled</h4>
-                                    <p class="text-body text-secondary">
-                                        I craft empowering and flexible digital spaces where every student can feel grounded
-                                        in and in control of their learning journey.
-                                    </p>
-                                </div>
-                            </div>
+                        <?php get_search_form(); ?>
 
-                            <div class="teaching-item">
-                                <span class="material-icons teaching-icon" aria-hidden="true">science</span>
-                                <div class="teaching-content">
-                                    <h4 class="item-title text-heading-4">Evidence-based strategies</h4>
-                                    <p class="text-body text-secondary">
-                                        Team-based learning? Flipped classrooms? Authentic assessments? OER resources? Check.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                    <?php else : ?>
 
-                        <div class="teaching-column">
-                            <h3 class="text-heading-3">What I teach:</h3>
+                        <p class="text-body">
+                            <?php _e('It seems we can\'t find what you\'re looking for. Perhaps searching can help.', 'claire-portfolio'); ?>
+                        </p>
 
-                            <div class="teaching-item">
-                                <span class="material-icons teaching-icon" aria-hidden="true">palette</span>
-                                <div class="teaching-content">
-                                    <h4 class="item-title text-heading-4">Graphic / UX / UI Design</h4>
-                                    <p class="text-body text-secondary">
-                                        From typography to user research and UI patterns, I demystify complex topics for
-                                        print and screen.
-                                    </p>
-                                </div>
-                            </div>
+                        <?php get_search_form(); ?>
 
-                            <div class="teaching-item">
-                                <span class="material-icons teaching-icon" aria-hidden="true">code</span>
-                                <div class="teaching-content">
-                                    <h4 class="item-title text-heading-4">Front-end development</h4>
-                                    <p class="text-body text-secondary">
-                                        I guide students through the art and science of building lean and accessible
-                                        digital products, emphasizing real-world skills and problem-solving.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="teaching-footer">
-                        <p>Learn more about my <a href="/teaching" class="teaching-link"><span>teaching</span></a></p>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </section>
 
+        <?php endif; ?>
 
+    </div>
+</div>
 
-            <!-- CTA Section -->
-            <section class="cta" aria-labelledby="cta-heading">
-                <div class="cta-container">
-                    <h2 id="cta-heading" class="cta-text text-body-large">
-                        Have a course or a project? Need expertise? Let's chat.
-                    </h2>
-                    <a href="/contact" class="cta-button" aria-label="Contact Claire about a project or course">
-                        <span>CONTACT</span>
-                    </a>
-                </div>
-            </section>
-    <?php
-        endif;
-
-    endif;
-    ?>
-
-</main>
-
-<!-- Footer Template Part -->
-<?php get_footer() ?>
+<?php get_footer(); ?>

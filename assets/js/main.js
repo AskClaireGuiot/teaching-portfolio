@@ -3,8 +3,6 @@
  * Coordinates all modules and initializes the application
  */
 
-alert('Hello from the book store');
-
 // Import all modules
 import { MobileNavigation, HeaderScrollEffect } from './modules/navigation.js';
 import { TypingAnimation } from './modules/animation.js';
@@ -32,17 +30,8 @@ class PortfolioApp {
     }
 
     waitForTemplates() {
-        // Listen for templates ready event
-        document.addEventListener('templatesReady', () => {
-            this.initializeComponents();
-        });
-
-        // Fallback: if templates are already loaded or event doesn't fire
-        setTimeout(() => {
-            if (this.components.length === 0) {
-                this.initializeComponents();
-            }
-        }, 2000);
+        // In WordPress, templates are loaded server-side, so initialize immediately
+        this.initializeComponents();
     }
 
     initializeComponents() {
@@ -64,9 +53,7 @@ class PortfolioApp {
             // Set up global error handling
             this.setupErrorHandling();
 
-            // Log successful initialization
-            console.log('Portfolio app initialized successfully');
-            console.log(`Initialized ${this.components.length} components`);
+            // Initialization complete
 
         } catch (error) {
             handleError(error, 'Application initialization');
@@ -149,7 +136,6 @@ class PortfolioApp {
 
                 // Add new component
                 this.components.push(newComponent);
-                console.log(`Reinitialized ${componentName}`);
             }
         } catch (error) {
             handleError(error, `Component reinitialization: ${componentName}`);
@@ -169,7 +155,6 @@ class PortfolioApp {
             }
 
             this.components = [];
-            console.log('Portfolio app destroyed');
         } catch (error) {
             handleError(error, 'Application destruction');
         }

@@ -100,8 +100,6 @@ export class TypingAnimation {
     }
 
     init() {
-        console.log(`Animation initialized: ${this.deviceType} device, ${this.performanceLevel} performance`);
-
         if (!this.heroText || prefersReducedMotion()) {
             if (this.heroText) {
                 const lastRole = this.roles[this.roles.length - 1];
@@ -310,7 +308,6 @@ export class TypingAnimation {
             let currentPathIndex = 0;
             const animateNextPath = () => {
                 if (currentPathIndex >= paths.length) {
-                    console.log('Handwriting animation completed');
                     resolve();
                     return;
                 }
@@ -349,8 +346,6 @@ export class TypingAnimation {
                 // Adjust timing based on device performance
                 const performanceMultiplier = this.getPerformanceMultiplier();
                 const duration = baseDuration * performanceMultiplier;
-
-                console.log(`Animating path ${currentPathIndex + 1}/${paths.length}, length: ${pathLength}, duration: ${duration}s`);
 
                 // Set transition and start animation for this path only
                 path.style.transition = `stroke-dashoffset ${duration}s ease-out`;

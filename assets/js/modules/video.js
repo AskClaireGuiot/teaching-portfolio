@@ -120,7 +120,7 @@ export class VideoOptimizer {
                 preloadVideo.muted = true;
 
                 preloadVideo.addEventListener('loadedmetadata', () => {
-                    console.log('Video metadata preloaded');
+
                     this.heroVideo.preload = 'auto';
                 });
 
@@ -136,11 +136,11 @@ export class VideoOptimizer {
     setupEventHandlers() {
         // Loading progress
         this.heroVideo.addEventListener('loadstart', () => {
-            console.log('Video loading started');
+
         });
 
         this.heroVideo.addEventListener('loadedmetadata', () => {
-            console.log('Video metadata loaded');
+
         });
 
         this.heroVideo.addEventListener('loadeddata', () => {

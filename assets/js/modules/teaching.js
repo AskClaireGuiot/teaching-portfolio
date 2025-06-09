@@ -258,16 +258,6 @@ export class TeachingTOC {
                     const offset = headerHeight + tocHeight + additionalOffset;
                     const targetPosition = targetSection.offsetTop - offset;
 
-                    // Debug logging to verify our calculations
-                    console.log('=== TOC CLICK DEBUG ===');
-                    console.log('Header height:', headerHeight);
-                    console.log('TOC height:', tocHeight);
-                    console.log('Additional offset:', additionalOffset);
-                    console.log('Total offset:', offset);
-                    console.log('Section top:', targetSection.offsetTop);
-                    console.log('Target position:', targetPosition);
-                    console.log('=======================');
-
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
