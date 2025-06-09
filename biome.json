@@ -7,8 +7,8 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["dist", ".next", "node_modules", "build", "src/generated/**"],
-    "include": ["src/**/*.ts", "src/**/*.tsx"]
+    "ignore": ["dist", ".next", "node_modules", "build"],
+    "include": ["assets/**/*.js", "*.js"]
   },
   "formatter": {
     "enabled": true,
