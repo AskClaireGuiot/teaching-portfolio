@@ -704,9 +704,9 @@ main li a {
 
 .teaching-icon {
   color: var(--color-accent);
-  font-size: 1.2em;
+  font-size: 1.6em;
   flex-shrink: 0;
-  margin-top: 4px; /* Adjusted to align better with heading baseline */
+  margin-top: 2px; /* Adjusted to align better with heading baseline */
 }
 
 .teaching-item .text-heading-4 {
@@ -1143,7 +1143,8 @@ main li a {
 }
 
 /* Case Study Link Styling */
-.case-study-link {
+.case-study-link,
+.emphasis-block {
   border: 1px solid var(--color-coral);
   padding: var(--spacing-lg);
   background-color: rgba(247, 118, 104, 0.1);
@@ -1197,6 +1198,12 @@ main li a {
   }
 }
 
+.emphasis-block ul {
+  background-color: initial;
+  padding: initial;
+  border: inital;
+  margin: initial;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .teaching-hero {
@@ -1431,6 +1438,7 @@ figcaption {
 @media (min-width: 769px) {
   :root {
     --header-height: 80px; /* Larger header on desktop */
+    --sidebar-width: 280px;
   }
 
   .nav-container {
@@ -1570,6 +1578,93 @@ figcaption {
     font-size: 3.4rem;
     line-height: 3.8rem;
     margin-bottom: var(--spacing-lg);
+  }
+
+  /* Create a flex container for sidebar + content layout */
+  .teaching-layout-container {
+    display: flex;
+    gap: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+    align-items: flex-start;
+  }
+
+  /* TOC Sidebar - scrolls normally until it hits the header */
+  .teaching-toc {
+    position: sticky;
+    top: var(--header-height);
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    z-index: 30;
+    max-height: calc(100vh - var(--header-height) - var(--spacing-lg));
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .teaching-toc-container {
+    padding: var(--spacing-lg);
+    max-width: none;
+    margin: 0;
+  }
+
+  .teaching-toc-header {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .teaching-toc-list {
+    display: block;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    flex-wrap: nowrap;
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+  }
+
+  .teaching-toc-list li {
+    margin-bottom: var(--spacing-sm);
+    width: 100%;
+  }
+
+  .teaching-toc-list ul {
+    margin-left: var(--spacing-md);
+    margin-top: var(--spacing-xs);
+  }
+
+  .teaching-toc-link {
+    display: block;
+    width: 100%;
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    white-space: normal;
+    line-height: var(--line-height-normal);
+  }
+
+  .mobile-toc-toggle {
+    display: none;
+  }
+
+  /* Main content area */
+  .page-teaching-content {
+    flex: 1;
+    max-width: 800px;
+    padding: var(--spacing-3xl) 0 var(--spacing-5xl) 0;
+  }
+
+  .page-teaching-content-container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Hero section remains full width */
+  .page-hero {
+    width: 100%;
+    margin-left: 0;
   }
 }
 

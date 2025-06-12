@@ -78,24 +78,37 @@ get_header(); ?>
         </h2>
         <p class="teaching-intro text-body-large">
             As an instructor with one foot in post-secondary, and the other in the tech industry, I approach each learning experience with a design thinking mindset: empathize, define, ideate, prototype, test and iterate.
-            I collaborate with educational institutions to develop strategic, human-centered approaches to teaching and learning that bridge traditional and digital environments.
+            I aim to develop effective, student-centered approaches to teaching and learning that bridge traditional and digital environments.
         </p>
         <div class="teaching-grid">
             <div>
                 <h3 class="text-heading-3">How I teach:</h3>
                 <ul>
                     <li class="teaching-item">
-                        <span class="teaching-icon material-icons" aria-hidden="true">school</span>
+                        <span class="teaching-icon material-symbols-outlined">
+                            verified
+                        </span>
                         <div>
-                            <h4 class="text-heading-4">Course Design</h4>
-                            <p>Developing comprehensive curricula that engage learners through strategic content organization and progressive skill building.</p>
+                            <h4 class="text-heading-4">Evidence-based Strategies</h4>
+                            <p>Team-based learning? Formative feedback? Authentic assessments? OER resources? Check. </p>
                         </div>
                     </li>
                     <li class="teaching-item">
-                        <span class="teaching-icon material-icons" aria-hidden="true">school</span>
+                        <span class="teaching-icon material-symbols-outlined">
+                            devices
+                        </span>
                         <div>
-                            <h4 class="text-heading-4">Course Design</h4>
-                            <p>Developing comprehensive curricula that engage learners through strategic content organization and progressive skill building.</p>
+                            <h4 class="text-heading-4">Technology-enabled Environments</h4>
+                            <p>I craft empowering and flexible digital spaces where every student can feel grounded and in-control of their learning journey.</p>
+                        </div>
+                    </li>
+                    <li class="teaching-item">
+                        <span class="teaching-icon material-symbols-outlined">
+                            hub
+                        </span>
+                        <div>
+                            <h4 class="text-heading-4">Supportive Learning Communities</h4>
+                            <p>I foster inclusive networks that prioritize honesty, relationship-building, and mutual support so students feel confident to participate actively.</p>
                         </div>
                     </li>
                 </ul>
@@ -104,53 +117,21 @@ get_header(); ?>
                 <h3 class="text-heading-3">What I teach:</h3>
                 <ul>
                     <li class="teaching-item">
-                        <span class="teaching-icon material-icons" aria-hidden="true">school</span>
+                        <span class="teaching-icon material-symbols-outlined">
+                            preview
+                        </span>
                         <div>
-                            <h4 class="text-heading-4">Course Design</h4>
-                            <p>Developing comprehensive curricula that engage learners through strategic content organization and progressive skill building.</p>
+                            <h4 class="text-heading-4">Graphic / UX / UI Design</h4>
+                            <p>From typography to user research and UI patterns, I demystify aesthetics, content, visual organization and usability for print and screen.</p>
                         </div>
                     </li>
                     <li class="teaching-item">
-                        <span class="teaching-icon material-icons" aria-hidden="true">school</span>
+                        <span class="teaching-icon material-symbols-outlined">
+                            code_blocks
+                        </span>
                         <div>
-                            <h4 class="text-heading-4">Course Design</h4>
-                            <p>Developing comprehensive curricula that engage learners through strategic content organization and progressive skill building.</p>
-
-                            <!-- /**
-* Default teaching content when no teaching materials exist
-*/
-
-// array(
-// 'icon' => 'school',
-// 'title' => 'Course Design',
-// 'content' => 'Developing comprehensive curricula that engage learners through strategic content organization and progressive skill building.'
-// ),
-// array(
-// 'icon' => 'group',
-// 'title' => 'Community Building',
-// 'content' => 'Fostering inclusive learning environments where students feel connected, supported, and empowered to participate actively.'
-// ),
-// array(
-// 'icon' => 'devices',
-// 'title' => 'Digital Integration',
-// 'content' => 'Seamlessly blending technology with pedagogy to enhance learning experiences and expand accessibility.'
-// ),
-// array(
-// 'icon' => 'assessment',
-// 'title' => 'Assessment Strategy',
-// 'content' => 'Creating meaningful evaluation methods that provide valuable feedback and support continuous improvement.'
-// ),
-// array(
-// 'icon' => 'lightbulb',
-// 'title' => 'Innovation Labs',
-// 'content' => 'Designing experimental learning spaces where students can explore, create, and push creative boundaries.'
-// ),
-// array(
-// 'icon' => 'accessibility',
-// 'title' => 'Inclusive Design',
-// 'content' => 'Ensuring learning experiences are accessible and meaningful for students with diverse backgrounds and abilities.'
-// )
-// -->
+                            <h4 class="text-heading-4">Front-end development</h4>
+                            <p>I guide students through the art and science of building lean and accessible digital products, emphasizing real-world skills and problem-solving.</p>
                         </div>
                     </li>
                 </ul>
@@ -174,3 +155,17 @@ wp_localize_script('claire-portfolio-main', 'heroData', array(
 ?>
 
 <?php get_footer(); ?>
+
+<!-- 
+// 'content' => 'Developing comprehensive curricula that engage learners through strategic content organization and progressive skill building.'
+
+// 'title' => 'Community Building',
+// 'content' => 'Fostering inclusive learning environments where students feel connected, supported, and empowered to participate actively.'
+// ),
+
+// 'title' => 'Digital Integration',
+// 'content' => 'Seamlessly blending technology with pedagogy to enhance learning experiences and expand accessibility.'
+// ),
+
+// 'title' => 'Inclusive Design',
+// 'content' => 'Ensuring learning experiences are accessible and meaningful for students with diverse backgrounds and abilities.' -->

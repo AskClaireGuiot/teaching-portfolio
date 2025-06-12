@@ -26,24 +26,17 @@ get_header(); ?>
             <div class="aspect-ratio-wrapper">
                 <?php the_post_thumbnail('hero-image'); ?>
             </div>
-            <figcaption>The exhibition in Raven Hall, Com Valley Campus.</figcaption>
+            <figcaption><?php the_post_thumbnail_caption() ?></figcaption>
         </figure>
     <?php endwhile; ?>
 </section>
 
-
+<!-- Case Study content -->
 <section class="single-case-study-content">
     <div class="single-case-study-content-container">
-
-        <!-- Introduction Section -->
-        <section
-            id="introduction" class="teaching-toc-section"
-            aria-labelledby="introduction-heading">
-            <?php while (have_posts()) : the_post(); ?>
-                <?php the_content(); ?>
-            <?php endwhile; ?>
-
-        </section>
+        <?php while (have_posts()) : the_post(); ?>
+            <?php the_content(); ?>
+        <?php endwhile; ?>
     </div>
 </section>
 

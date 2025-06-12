@@ -26,9 +26,14 @@
             </p>
 
             <p class="footer-disclaimer">
-                Unless otherwise noted, contents on this website are released with a Creative Commons Attribution license meaning you are free to copy and reuse, though I would appreciate you reaching out to ask my permission providing you credit me as the source of the content.
+                Unless otherwise noted, contents on this website are released with a Creative Commons Attribution license meaning you are free to copy and reuse providing you credit me as the source of the content. I would also appreciate you reaching out to ask my permission.
             </p>
-            <p><strong>About the making of this website:</strong> The coding of this website is an experiment, it was 60% vibe-coded using <a>same.new</a>. Traditionla manul methods were used for Fgma and <a>WordPress</a>.
+            <p>About the making of this website:</p>
+            <p class="footer-disclaimer">
+                <strong>The content</strong> for this website is 88% original with 12% Microsoft Copilot for editing suggestions only.
+                <strong>The design</strong> was created manually using Figma (no AI).
+                <strong>The coding</strong> of this website is an experiment, it was 60% vibe-coded using same.new, with significant manual clean up and adaptations for WP integration.
+            </p>
 
         </div>
 
