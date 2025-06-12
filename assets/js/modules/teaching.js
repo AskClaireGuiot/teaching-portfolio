@@ -257,10 +257,9 @@ export class TeachingTOC {
 
                 if (targetSection) {
                     const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-                    const tocHeight = this.toc?.offsetHeight || 0;
-                    // Consistent offset for optimal heading positioning
-                    const additionalOffset = 60; // Same for both desktop and mobile
-                    const offset = headerHeight + tocHeight + additionalOffset;
+                    // For sticky TOC layout, use optimized offset based on screen size
+                    const additionalOffset = window.innerWidth > 768 ? 80 : 140; // Smaller offset for desktop sticky TOC
+                    const offset = headerHeight + additionalOffset;
                     const targetPosition = targetSection.offsetTop - offset;
 
                     window.scrollTo({
