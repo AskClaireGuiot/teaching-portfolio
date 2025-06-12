@@ -23,7 +23,12 @@ export class TeachingTOC {
     }
 
     init() {
-        if (!this.toc || this.sections.length === 0) return;
+        if (!this.toc || this.sections.length === 0) {
+            console.warn('TOC or sections not found. TOC:', !!this.toc, 'Sections:', this.sections.length);
+            return;
+        }
+
+
 
         this.setupMobileNavigation();
         this.setupSmoothScrolling();
@@ -279,6 +284,10 @@ export class TeachingTOC {
         }, 100));
     }
 
+
+
+
+
     /**
      * Update active link based on scroll position
      * This method automatically adapts to any content changes
@@ -324,6 +333,7 @@ export class TeachingTOC {
 
         // Update highlighting if we have a new active section
         if (activeSection && activeSection !== this.getCurrentSection()) {
+
             this.setActiveLink(activeSection);
         }
     }
@@ -337,10 +347,14 @@ export class TeachingTOC {
 
         // Add active class to current link
         const activeLink = document.querySelector(`.teaching-toc-link[href="#${sectionId}"]`);
+
+
         if (activeLink && activeLink !== this.currentActiveLink) {
             activeLink.classList.add('active');
             activeLink.setAttribute('aria-current', 'location');
             this.currentActiveLink = activeLink;
+
+
 
             // Announce to screen readers that the current section has changed
             this.announceCurrentSection(sectionId);
@@ -406,9 +420,13 @@ export class TeachingPageManager {
     }
 
     init() {
-        // Only initialize on teaching page
-        if (!document.querySelector('.teaching-hero')) return;
+        // Only initialize on teaching page (check for TOC element instead)
+        if (!document.querySelector('.teaching-toc')) {
+            console.log('TeachingPageManager: No teaching TOC found, not initializing');
+            return;
+        }
 
+        console.log('TeachingPageManager: Initializing TOC');
         this.toc = new TeachingTOC();
 
         // Set up any additional teaching page functionality

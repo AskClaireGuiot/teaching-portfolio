@@ -1242,8 +1242,9 @@ main li a {
   }
 
   .teaching-toc-list.active {
-    max-height: 350px; /* Enough height for all navigation items */
+    max-height: 80vh; /* Allow up to 80% of viewport height for navigation items */
     opacity: 1;
+    overflow-y: auto; /* Add scrolling if content exceeds available space */
   }
 
   .teaching-toc-list li {
@@ -1273,7 +1274,7 @@ main li a {
     display: flex;
     min-height: 44px; /* Minimum touch target size for mobile accessibility */
   }
-  /* 
+  /*
   .teaching-content {
     padding: var(--spacing-2xl) 0 var(--spacing-4xl) 0;
   } */
@@ -1438,7 +1439,7 @@ figcaption {
 @media (min-width: 769px) {
   :root {
     --header-height: 80px; /* Larger header on desktop */
-    --sidebar-width: 280px;
+    --sidebar-width: 280px; /* TOC sidebar width */
   }
 
   .nav-container {
@@ -1463,6 +1464,134 @@ figcaption {
     box-shadow: none;
     display: flex;
     align-items: center;
+  }
+
+  /* Desktop TOC Sidebar Layout */
+  .teaching-toc {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height));
+    background-color: var(--color-background);
+    border-right: 1px solid var(--color-border);
+    border-bottom: none;
+    z-index: 30;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .teaching-toc-container {
+    padding: var(--spacing-lg);
+    max-width: none;
+    margin: 0;
+    position: relative;
+  }
+
+  /* Progress indicator */
+  .teaching-toc-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    background-color: var(--color-border);
+    border-radius: 2px;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .teaching-toc-progress-bar {
+    width: 100%;
+    background-color: var(--color-accent);
+    background: linear-gradient(
+      to bottom,
+      var(--color-accent),
+      var(--color-accent-dark)
+    );
+    border-radius: 2px;
+    transition: height 0.3s ease-out;
+    height: 0%;
+    min-height: 8px;
+  }
+
+  .teaching-toc-header {
+    margin-bottom: var(--spacing-lg);
+    padding-left: var(--spacing-md);
+    position: relative;
+  }
+
+  .teaching-toc-list {
+    display: block;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    flex-wrap: nowrap;
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    padding-left: var(--spacing-md);
+    position: relative;
+  }
+
+  .teaching-toc-list li {
+    margin-bottom: var(--spacing-sm);
+    width: 100%;
+  }
+
+  .teaching-toc-list ul {
+    margin-left: var(--spacing-md);
+    margin-top: var(--spacing-xs);
+  }
+
+  .teaching-toc-link {
+    display: block;
+    width: 100%;
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    white-space: normal;
+    line-height: var(--line-height-normal);
+    border-radius: 4px;
+    transition: all var(--transition-fast);
+    position: relative;
+  }
+
+  /* Enhanced active state with position indicator */
+  .teaching-toc-link.active {
+    color: var(--color-accent);
+    background-color: rgba(114, 180, 178, 0.15);
+    font-weight: var(--font-weight-semibold);
+    transform: translateX(2px);
+  }
+
+  .teaching-toc-link.active::before {
+    content: "";
+    position: absolute;
+    left: -var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 20px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+  }
+
+  .mobile-toc-toggle {
+    display: none; /* Hide mobile toggle on desktop */
+  }
+
+  /* Adjust page layout for sidebar */
+  .page-hero {
+    margin-left: var(--sidebar-width);
+  }
+
+  .page-teaching-content {
+    margin-left: var(--sidebar-width);
+    padding: var(--spacing-3xl) 0 var(--spacing-5xl) 0;
+  }
+
+  .page-teaching-content-container {
+    max-width: 800px; /* Set main content width to 800px as requested */
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
   }
 
   .text-heading-2 {
@@ -1578,93 +1707,6 @@ figcaption {
     font-size: 3.4rem;
     line-height: 3.8rem;
     margin-bottom: var(--spacing-lg);
-  }
-
-  /* Create a flex container for sidebar + content layout */
-  .teaching-layout-container {
-    display: flex;
-    gap: var(--spacing-xl);
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-lg);
-    align-items: flex-start;
-  }
-
-  /* TOC Sidebar - scrolls normally until it hits the header */
-  .teaching-toc {
-    position: sticky;
-    top: var(--header-height);
-    width: var(--sidebar-width);
-    flex-shrink: 0;
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    z-index: 30;
-    max-height: calc(100vh - var(--header-height) - var(--spacing-lg));
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  .teaching-toc-container {
-    padding: var(--spacing-lg);
-    max-width: none;
-    margin: 0;
-  }
-
-  .teaching-toc-header {
-    margin-bottom: var(--spacing-lg);
-  }
-
-  .teaching-toc-list {
-    display: block;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    flex-wrap: nowrap;
-    max-height: none;
-    opacity: 1;
-    overflow: visible;
-  }
-
-  .teaching-toc-list li {
-    margin-bottom: var(--spacing-sm);
-    width: 100%;
-  }
-
-  .teaching-toc-list ul {
-    margin-left: var(--spacing-md);
-    margin-top: var(--spacing-xs);
-  }
-
-  .teaching-toc-link {
-    display: block;
-    width: 100%;
-    font-size: var(--font-size-sm);
-    padding: var(--spacing-xs) var(--spacing-sm);
-    white-space: normal;
-    line-height: var(--line-height-normal);
-  }
-
-  .mobile-toc-toggle {
-    display: none;
-  }
-
-  /* Main content area */
-  .page-teaching-content {
-    flex: 1;
-    max-width: 800px;
-    padding: var(--spacing-3xl) 0 var(--spacing-5xl) 0;
-  }
-
-  .page-teaching-content-container {
-    max-width: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Hero section remains full width */
-  .page-hero {
-    width: 100%;
-    margin-left: 0;
   }
 }
 

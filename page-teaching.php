@@ -28,7 +28,7 @@ get_header(); ?>
 
 <!-- Desktop Layout Container -->
 <div class="teaching-layout-container">
-    <!-- Table of Contents - Sticky Navigation -->>">
+    <!-- Table of Contents - Sticky Navigation -->
     <nav class="teaching-toc" aria-label="On this page">
         <div class="teaching-toc-container">
             <div class="teaching-toc-header">
