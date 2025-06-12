@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Claire Guiot Portfolio Theme Functions
  *
@@ -14,7 +15,8 @@ if (!defined('ABSPATH')) {
 /**
  * Theme Setup
  */
-function claire_portfolio_setup() {
+function claire_portfolio_setup()
+{
     // Add theme support for various features
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -50,7 +52,8 @@ add_action('after_setup_theme', 'claire_portfolio_setup');
 /**
  * Enqueue Scripts and Styles
  */
-function claire_portfolio_scripts() {
+function claire_portfolio_scripts()
+{
     $theme_version = wp_get_theme()->get('Version');
 
     // Enqueue Google Fonts
@@ -64,7 +67,7 @@ function claire_portfolio_scripts() {
     // Enqueue Material Icons
     wp_enqueue_style(
         'claire-portfolio-material-icons',
-        'https://fonts.googleapis.com/icon?family=Material+Icons',
+        'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined',
         array(),
         null
     );
@@ -98,7 +101,8 @@ add_action('wp_enqueue_scripts', 'claire_portfolio_scripts');
 /**
  * Add module type to main script for ES6 imports
  */
-function claire_portfolio_add_module_type($tag, $handle) {
+function claire_portfolio_add_module_type($tag, $handle)
+{
     if ('claire-portfolio-main' === $handle) {
         return str_replace('<script ', '<script type="module" ', $tag);
     }
@@ -109,33 +113,19 @@ add_filter('script_loader_tag', 'claire_portfolio_add_module_type', 10, 2);
 /**
  * Add Custom Image Sizes
  */
-function claire_portfolio_image_sizes() {
+function claire_portfolio_image_sizes()
+{
     add_image_size('hero-image', 1200, 800, true);
-    add_image_size('featured-large', 800, 600, true);
+    add_image_size('featured-large', 900, 450, true);
     add_image_size('thumbnail-medium', 400, 300, true);
 }
 add_action('after_setup_theme', 'claire_portfolio_image_sizes');
 
 /**
- * Customize Excerpt Length
- */
-function claire_portfolio_excerpt_length($length) {
-    return 30;
-}
-add_filter('excerpt_length', 'claire_portfolio_excerpt_length');
-
-/**
- * Customize Excerpt More
- */
-function claire_portfolio_excerpt_more($more) {
-    return '...';
-}
-add_filter('excerpt_more', 'claire_portfolio_excerpt_more');
-
-/**
  * Add Theme Customizer Options
  */
-function claire_portfolio_customize_register($wp_customize) {
+function claire_portfolio_customize_register($wp_customize)
+{
     // Hero Section
     $wp_customize->add_section('hero_section', array(
         'title' => __('Hero Section', 'claire-portfolio'),
@@ -307,7 +297,8 @@ add_action('customize_register', 'claire_portfolio_customize_register');
 /**
  * Body Classes
  */
-function claire_portfolio_body_classes($classes) {
+function claire_portfolio_body_classes($classes)
+{
     // Add class for JavaScript support
     $classes[] = 'js-enabled';
 
@@ -323,31 +314,17 @@ add_filter('body_class', 'claire_portfolio_body_classes');
 /**
  * Admin Enqueue Scripts
  */
-function claire_portfolio_admin_scripts() {
+function claire_portfolio_admin_scripts()
+{
     // Add any admin-specific scripts here
 }
 add_action('admin_enqueue_scripts', 'claire_portfolio_admin_scripts');
 
 /**
- * Widget Areas
- */
-function claire_portfolio_widgets_init() {
-    register_sidebar(array(
-        'name' => __('Footer Widget Area', 'claire-portfolio'),
-        'id' => 'footer-widget-area',
-        'description' => __('Widget area for the footer', 'claire-portfolio'),
-        'before_widget' => '<div class="widget %2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h3 class="widget-title">',
-        'after_title' => '</h3>'
-    ));
-}
-add_action('widgets_init', 'claire_portfolio_widgets_init');
-
-/**
  * Security enhancements
  */
-function claire_portfolio_security() {
+function claire_portfolio_security()
+{
     // Remove WordPress version from head
     remove_action('wp_head', 'wp_generator');
 
@@ -356,5 +333,6 @@ function claire_portfolio_security() {
 
     // Remove RSD link
     remove_action('wp_head', 'rsd_link');
+    add_post_type_support('page', 'excerpt');
 }
 add_action('init', 'claire_portfolio_security');

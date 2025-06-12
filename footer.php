@@ -1,10 +1,21 @@
 </main><!-- Close main element opened in header.php -->
 
 <!-- Footer -->
+<!-- CTA Section -->
+<section class="cta" aria-labelledby="cta-heading">
+    <div class="cta-container">
+        <h2 class="text-heading-3">
+            Have a course or a project? Need expertise? Let's chat.
+        </h2>
+        <a href="mailto:hello@claireguiot.com?subject=Let's get in contact" class="button">
+            <span>Contact</span>
+        </a>
+    </div>
+</section>
 <footer class="footer" role="contentinfo">
     <div class="footer-container">
         <div class="footer-content">
-            <p class="footer-copyright">
+            <p>
                 <?php
                 printf(
                     __('Copyright © %s %s', 'claire-portfolio'),
@@ -14,24 +25,11 @@
                 ?>
             </p>
 
-            <?php
-            $footer_text = get_theme_mod('footer_text', '');
-            if ($footer_text) :
-            ?>
-                <p class="footer-disclaimer">
-                    <?php echo wp_kses_post($footer_text); ?>
-                </p>
-            <?php else : ?>
-                <p class="footer-disclaimer">
-                    <?php _e('Unless otherwise noted, contents on this website are released with a Creative Commons Attribution license meaning you are free to copy and reuse, though I would appreciate you reaching out to ask my permission providing you credit me as the source of the content.', 'claire-portfolio'); ?>
-                </p>
-            <?php endif; ?>
+            <p class="footer-disclaimer">
+                Unless otherwise noted, contents on this website are released with a Creative Commons Attribution license meaning you are free to copy and reuse, though I would appreciate you reaching out to ask my permission providing you credit me as the source of the content.
+            </p>
+            <p><strong>About the making of this website:</strong> The coding of this website is an experiment, it was 60% vibe-coded using <a>same.new</a>. Traditionla manul methods were used for Fgma and <a>WordPress</a>.
 
-            <?php if (is_active_sidebar('footer-widget-area')) : ?>
-                <div class="footer-widgets">
-                    <?php dynamic_sidebar('footer-widget-area'); ?>
-                </div>
-            <?php endif; ?>
         </div>
 
         <div class="footer-social">
@@ -57,13 +55,15 @@
 
 <?php wp_footer(); ?>
 </body>
+
 </html>
 
 <?php
 /**
  * Display social links from customizer
  */
-function claire_portfolio_social_links() {
+function claire_portfolio_social_links()
+{
     $social_links = array(
         'linkedin' => get_theme_mod('linkedin_url', ''),
         'medium' => get_theme_mod('medium_url', ''),
@@ -90,10 +90,12 @@ function claire_portfolio_social_links() {
 /**
  * Custom Social Nav Walker
  */
-class Claire_Portfolio_Social_Nav_Walker extends Walker_Nav_Menu {
+class Claire_Portfolio_Social_Nav_Walker extends Walker_Nav_Menu
+{
 
     // Start the list item
-    function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
+    function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
+    {
         $attributes = ! empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
         $attributes .= ! empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
         $attributes .= ! empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
@@ -112,7 +114,8 @@ class Claire_Portfolio_Social_Nav_Walker extends Walker_Nav_Menu {
     }
 
     // Don't output list items
-    function end_el(&$output, $item, $depth = 0, $args = null) {
+    function end_el(&$output, $item, $depth = 0, $args = null)
+    {
         // Do nothing - we don't want closing li tags
     }
 }

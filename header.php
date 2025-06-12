@@ -64,31 +64,31 @@
                                                 /**
                                                  * Fallback menu when no menu is assigned
                                                  */
-                                                // function claire_portfolio_fallback_menu()
-                                                // {
-                                                //     echo '<ul class="nav-menu" id="main-menu" role="menubar">';
-                                                //     echo '<li role="none"><a href="' . esc_url(home_url('/')) . '" class="nav-link" role="menuitem">' . __('HOME', 'claire-portfolio') . '</a></li>';
+                                                function claire_portfolio_fallback_menu()
+                                                {
+                                                    echo '<ul class="nav-menu" id="main-menu" role="menubar">';
+                                                    echo '<li role="none"><a href="' . esc_url(home_url('/')) . '" class="nav-link" role="menuitem">' . __('HOME', 'claire-portfolio') . '</a></li>';
 
-                                                //     // Check if Teaching page exists
-                                                //     $teaching_page = get_page_by_path('teaching');
-                                                //     if ($teaching_page) {
-                                                //         echo '<li role="none"><a href="' . esc_url(get_permalink($teaching_page)) . '" class="nav-link" role="menuitem">' . __('TEACHING', 'claire-portfolio') . '</a></li>';
-                                                //     }
+                                                    // Check if Teaching page exists
+                                                    $teaching_page = get_page_by_path('teaching');
+                                                    if ($teaching_page) {
+                                                        echo '<li role="none"><a href="' . esc_url(get_permalink($teaching_page)) . '" class="nav-link" role="menuitem">' . __('TEACHING', 'claire-portfolio') . '</a></li>';
+                                                    }
 
-                                                //     // Check if About page exists
-                                                //     $about_page = get_page_by_path('about');
-                                                //     if ($about_page) {
-                                                //         echo '<li role="none"><a href="' . esc_url(get_permalink($about_page)) . '" class="nav-link" role="menuitem">' . __('ABOUT', 'claire-portfolio') . '</a></li>';
-                                                //     }
+                                                    // Check if About page exists
+                                                    $about_page = get_page_by_path('about');
+                                                    if ($about_page) {
+                                                        echo '<li role="none"><a href="' . esc_url(get_permalink($about_page)) . '" class="nav-link" role="menuitem">' . __('ABOUT', 'claire-portfolio') . '</a></li>';
+                                                    }
 
-                                                //     // Check if Contact page exists
-                                                //     $contact_page = get_page_by_path('contact');
-                                                //     if ($contact_page) {
-                                                //         echo '<li role="none"><a href="' . esc_url(get_permalink($contact_page)) . '" class="nav-link contact-link" role="menuitem"><span>' . __('CONTACT', 'claire-portfolio') . '</span></a></li>';
-                                                //     }
+                                                    // Check if Contact page exists
+                                                    $contact_page = get_page_by_path('contact');
+                                                    if ($contact_page) {
+                                                        echo '<li role="none"><a href="' . esc_url(get_permalink($contact_page)) . '" class="nav-link contact-link" role="menuitem"><span>' . __('CONTACT', 'claire-portfolio') . '</span></a></li>';
+                                                    }
 
-                                                //     echo '</ul>';
-                                                // }
+                                                    echo '</ul>';
+                                                }
 
                                                 /**
                                                  * Custom Nav Walker for accessibility

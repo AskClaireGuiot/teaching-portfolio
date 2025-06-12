@@ -13,7 +13,7 @@ export class TeachingTOC {
     constructor() {
         this.toc = document.querySelector('.teaching-toc');
         this.tocLinks = document.querySelectorAll('.teaching-toc-link');
-        this.sections = document.querySelectorAll('.teaching-section');
+        this.sections = document.querySelectorAll('.teaching-toc-section');
         this.mobileToggle = document.querySelector('.mobile-toc-toggle');
         this.tocList = document.querySelector('.teaching-toc-list');
         this.currentActiveLink = null;
