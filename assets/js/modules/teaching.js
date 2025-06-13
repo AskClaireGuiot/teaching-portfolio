@@ -48,7 +48,7 @@ export class TeachingTOC {
             this.tocList.classList.add('active');
 
             // Set correct icon - up arrow when expanded
-            const icon = this.mobileToggle.querySelector('.material-icons');
+            const icon = this.mobileToggle.querySelector('.material-symbols-outlined');
             if (icon) icon.textContent = 'keyboard_arrow_up';
         }
 
@@ -90,7 +90,7 @@ export class TeachingTOC {
 
         // Handle window resize
         window.addEventListener('resize', debounce(() => {
-            const icon = this.mobileToggle.querySelector('.material-icons');
+            const icon = this.mobileToggle.querySelector('.material-symbols-outlined');
 
             if (window.innerWidth > 768) {
                 // Desktop: always show list, hide toggle
@@ -117,7 +117,7 @@ export class TeachingTOC {
         this.tocList.classList.toggle('active', newState);
 
         // Update icon - up when expanded, down when collapsed
-        const icon = this.mobileToggle.querySelector('.material-icons');
+        const icon = this.mobileToggle.querySelector('.material-symbols-outlined');
         if (icon) {
             icon.textContent = newState ? 'keyboard_arrow_up' : 'keyboard_arrow_down';
         }
@@ -133,7 +133,7 @@ export class TeachingTOC {
         this.mobileToggle.setAttribute('aria-expanded', 'false');
         this.tocList.classList.remove('active');
 
-        const icon = this.mobileToggle.querySelector('.material-icons');
+        const icon = this.mobileToggle.querySelector('.material-symbols-outlined');
         if (icon) {
             icon.textContent = 'keyboard_arrow_down';
         }
@@ -258,7 +258,7 @@ export class TeachingTOC {
                 if (targetSection) {
                     const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
                     // For sticky TOC layout, use optimized offset based on screen size
-                    const additionalOffset = window.innerWidth > 768 ? 80 : 140; // Smaller offset for desktop sticky TOC
+                    const additionalOffset = window.innerWidth > 768 ? 80 : 460; // Increased mobile offset to position h2 below collapsed TOC
                     const offset = headerHeight + additionalOffset;
                     const targetPosition = targetSection.offsetTop - offset;
 

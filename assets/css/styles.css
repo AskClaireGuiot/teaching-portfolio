@@ -338,7 +338,7 @@ main li a {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: var(--z-header);
   background-color: white;
   border-bottom: 1px solid transparent;
   transition: all var(--transition-normal);
@@ -427,7 +427,7 @@ main li a {
   top: 100%;
   left: 0;
   right: 0;
-  z-index: -1; /* Above teaching TOC (z-index: 50) but behind header (z-index: 100) */
+  z-index: -1; /* behind header on mobile */
   background-color: var(--color-background);
   border-bottom: 1px solid #d7d7d7;
   /* flex-direction: column; */
@@ -1018,7 +1018,7 @@ main li a {
 .page-hero-container {
   max-width: var(--container-max-width);
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding: 0 var(--spacing-lg);
 }
 
 /* Table of Contents - Sticky Navigation */
@@ -1081,7 +1081,7 @@ main li a {
 
 .teaching-toc-link:hover,
 .teaching-toc-link:focus {
-  color: var(--color-accent);
+  color: var(--color-accent-dark);
   background-color: rgba(114, 180, 178, 0.1);
 }
 
@@ -1107,7 +1107,7 @@ main li a {
   gap: var(--spacing-xs);
 }
 
-.mobile-toc-toggle .material-icons {
+.mobile-toc-toggle .material-symbols-outlined {
   font-size: 1.2rem;
   transition: transform 0.2s ease-out;
 }
@@ -1337,12 +1337,17 @@ main li a {
   }
   /* Reduced mobile offset to bring headings up */
   /* .teaching-section {
-    scroll-margin-top: 140px; 
+    scroll-margin-top: 140px;
     margin-bottom: var(--spacing-4xl);
   } */
 
   .teaching-subsection {
     margin-bottom: var(--spacing-lg);
+  }
+
+  /* Mobile scroll margin for h2 elements to position below collapsed TOC */
+  .page-teaching-content-container h2 {
+    scroll-margin-top: 460px;
   }
 
   .course-structure {
@@ -1454,7 +1459,7 @@ figcaption {
   margin-bottom: var(--spacing-3xl);
   scroll-margin-top: calc(
     var(--header-height) + 140px
-  ); 
+  );
 } */
 
 /* h3 {
@@ -1522,6 +1527,7 @@ figcaption {
     box-shadow: none;
     display: flex;
     align-items: center;
+    z-index: 60; /* Above teaching TOC (z-index: 50) but behind header (z-index: 100) */
   }
 
   /* Desktop Layout Container - Flexbox for TOC and Content */
@@ -1541,13 +1547,13 @@ figcaption {
     width: 280px;
     flex-shrink: 0;
     background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: var(--spacing-lg);
+    /* padding: var(--spacing-lg); */
     max-height: calc(100vh - var(--header-height) - var(--spacing-xl));
+    margin-top: var(--spacing-lg);
     overflow-y: auto;
     overflow-x: hidden;
     z-index: 30;
+    border: 0;
   }
 
   .teaching-toc-container {
@@ -1585,8 +1591,7 @@ figcaption {
 
   .teaching-toc-header {
     margin-bottom: var(--spacing-lg);
-    padding-left: var(--spacing-md);
-    position: relative;
+    /* position: relative; */
   }
 
   .teaching-toc-list {
@@ -1595,27 +1600,27 @@ figcaption {
     gap: var(--spacing-sm);
     flex-wrap: nowrap;
     max-height: none;
-    opacity: 1;
+    /* opacity: 1;
     overflow: visible;
-    padding-left: var(--spacing-md);
+    padding-left: var(--spacing-md); */
     position: relative;
   }
 
-  .teaching-toc-list li {
+  /* .teaching-toc-list ul li {
     margin-bottom: var(--spacing-sm);
     width: 100%;
-  }
+  } */
 
-  .teaching-toc-list ul {
+  /* .teaching-toc-list ul {
     margin-left: var(--spacing-md);
     margin-top: var(--spacing-xs);
-  }
+  } */
 
   .teaching-toc-link {
     display: block;
     width: 100%;
-    font-size: var(--font-size-sm);
-    padding: var(--spacing-xs) var(--spacing-sm);
+    /* font-size: var(--font-size-sm); */
+    padding: var(--spacing-sm) var(--spacing-md);
     white-space: normal;
     line-height: var(--line-height-normal);
     border-radius: 4px;
@@ -1624,23 +1629,15 @@ figcaption {
   }
 
   /* Enhanced active state with position indicator */
-  .teaching-toc-link.active {
-    color: var(--color-accent);
-    background-color: rgba(114, 180, 178, 0.15);
-    font-weight: var(--font-weight-semibold);
-    transform: translateX(2px);
-  }
 
   .teaching-toc-link.active::before {
     content: "";
     position: absolute;
-    left: -var(--spacing-md);
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3px;
-    height: 20px;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
     background-color: var(--color-accent);
-    border-radius: 2px;
   }
 
   .mobile-toc-toggle {
