@@ -373,23 +373,23 @@ export class TeachingTOC {
      * Scroll to a specific section programmatically
      * @param {string} sectionId - The ID of the section to scroll to
      */
-    scrollToSection(sectionId) {
-        const targetSection = document.getElementById(sectionId);
-        if (targetSection) {
-            const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-            const tocHeight = this.toc?.offsetHeight || 0;
-            // Consistent offset for all devices
-            const additionalOffset = 60;
-            const offset = headerHeight + tocHeight + additionalOffset;
+    // scrollToSection(sectionId) {
+    //     const targetSection = document.getElementById(sectionId);
+    //     if (targetSection) {
+    //         const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+    //         const tocHeight = this.toc?.offsetHeight || 0;
+    //         // Consistent offset for all devices
+    //         const additionalOffset = 60;
+    //         const offset = headerHeight + tocHeight + additionalOffset;
 
-            const targetPosition = targetSection.offsetTop - offset;
+    //         const targetPosition = targetSection.offsetTop - offset;
 
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    }
+    //         window.scrollTo({
+    //             top: targetPosition,
+    //             behavior: 'smooth'
+    //         });
+    //     }
+    // }
 
     /**
      * Get the currently active section

@@ -34,7 +34,9 @@ get_header(); ?>
             <div class="teaching-toc-header">
                 <h2 class="text-heading-4">On this page:</h2>
                 <button class="mobile-toc-toggle" aria-expanded="false" aria-controls="teaching-toc-list">
-                    <span class="material-icons">keyboard_arrow_down</span>
+                    <span class="material-symbols-outlined">
+                        keyboard_arrow_down
+                    </span>
                 </button>
             </div>
             <ul class="teaching-toc-list" id="teaching-toc-list">

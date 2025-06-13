@@ -121,6 +121,13 @@ function claire_portfolio_image_sizes()
 }
 add_action('after_setup_theme', 'claire_portfolio_image_sizes');
 
+// hide admin bar wehne logged in
+function remove_admin_bar()
+{
+    return false;
+}
+add_filter('show_admin_bar', 'remove_admin_bar');
+
 /**
  * Add Theme Customizer Options
  */

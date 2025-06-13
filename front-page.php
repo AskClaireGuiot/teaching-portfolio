@@ -44,7 +44,7 @@ get_header(); ?>
         <span class="hero-cursor" aria-hidden="true">|</span>
     </h1>
     <button class="replay-btn" aria-label="<?php _e('Replay typing animation', 'claire-portfolio'); ?>">
-        <span class="material-icons" aria-hidden="true">play_arrow</span> <span><?php _e('REPLAY ANIMATION', 'claire-portfolio'); ?></span>
+        <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span> <span><?php _e('REPLAY ANIMATION', 'claire-portfolio'); ?></span>
     </button>
 </section>
 

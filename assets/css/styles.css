@@ -29,7 +29,7 @@ body {
   --color-teal: #4ecdc4;
   --color-black: #000000;
   --color-white: #ffffff;
-  --color-border: #ced2d2;
+  --color-border: #000000;
   --color-neutral: #f5f5f5;
 
   /* Typography - Mobile First */
@@ -108,9 +108,9 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-body.logged-in header {
+/* body.logged-in header {
   margin-top: 32px;
-}
+} */
 
 /* ==========================================================================
    Unified Typography System
@@ -130,7 +130,7 @@ h6 {
 }
 
 strong {
-  font-weight: var(--font-weight-extrabold);
+  font-weight: var(--font-weight-bold);
 }
 /* Typography utility classes for consistent styling */
 .text-display {
@@ -145,12 +145,14 @@ strong {
   line-height: var(--line-height-tight);
 }
 
+h2,
 .text-heading-2 {
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
 }
 
+h3,
 .text-heading-3 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-extrabold);
@@ -236,6 +238,22 @@ hr.wp-block-separator {
   border-bottom: 1px solid;
   margin: var(--spacing-4xl) auto;
 }
+.back-to-top a {
+  font-family: var(--font-family-utility);
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+}
+.back-to-top a::before {
+  content: "arrow_upward";
+  font-family: "Material Symbols Outlined";
+  font-size: 1rem;
+  color: var(--color-black);
+  padding-right: 4px;
+  transform: translateY(10%);
+  text-decoration: none;
+  display: inline-block;
+  color: var(--color-coral);
+}
 
 /* Text List Styling */
 main ul,
@@ -254,6 +272,7 @@ main li {
 main li a {
   text-decoration: underline;
   color: var(--color-coral);
+  cursor: pointer;
 }
 
 .wp-block-quote {
@@ -319,8 +338,8 @@ main li a {
   top: 0;
   left: 0;
   right: 0;
-  z-index: var(--z-header);
-  background-color: var(--color-background);
+  z-index: 100;
+  background-color: white;
   border-bottom: 1px solid transparent;
   transition: all var(--transition-normal);
 }
@@ -333,11 +352,11 @@ main li a {
   margin: 0 auto;
   padding: 0 var(--spacing-md); /* Mobile padding */
   height: var(--header-height);
+  background-color: rgba(255, 255, 255);
 }
 
 /* Brand/Logo - Mobile First */
 .brand {
-  background-color: rgba(255, 255, 255, 0.95);
   position: relative;
   z-index: 100;
 }
@@ -408,18 +427,23 @@ main li a {
   top: 100%;
   left: 0;
   right: 0;
-  z-index: 60; /* Above teaching TOC (z-index: 50) but behind header (z-index: 100) */
+  z-index: -1; /* Above teaching TOC (z-index: 50) but behind header (z-index: 100) */
   background-color: var(--color-background);
-  border-bottom: 1px solid var(--color-border);
-  flex-direction: column;
-  padding: var(--spacing-lg);
-  gap: var(--spacing-lg);
+  border-bottom: 1px solid #d7d7d7;
+  /* flex-direction: column; */
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-lg);
+  margin: 0;
+  /* gap: var(--spacing-lg); */
   transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
   transition: all var(--transition-normal);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   list-style: none;
+}
+
+.menu-item {
+  margin: var(--spacing-md) 0;
 }
 
 .nav-menu.active {
@@ -983,8 +1007,12 @@ main li a {
 /* Teaching Hero Section */
 .page-hero {
   background-color: var(--color-accent-light);
-  padding: var(--spacing-3xl) 0 var(--spacing-2xl) 0;
+  padding: var(--spacing-md) 0 var(--spacing-xl);
   margin-top: var(--header-height);
+}
+
+.page-hero .text-heading-1 {
+  margin-bottom: 0;
 }
 
 .page-hero-container {
@@ -1029,10 +1057,21 @@ main li a {
   flex-wrap: wrap;
 }
 
+.teaching-toc-list li {
+  margin: 0 0 0 0;
+  padding: 0;
+}
+.teaching-toc-list ul {
+  padding: 0 0 0 var(--spacing-xl);
+  margin: 0;
+}
+.teaching-toc-list ul li {
+  margin: 0 0 0 16px;
+}
 .teaching-toc-link {
   color: var(--color-text-secondary);
   text-decoration: none;
-  font-size: var(--font-size-sm);
+  /* font-size: var(--font-size-sm); */
   font-weight: var(--font-weight-medium);
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: 4px;
@@ -1047,7 +1086,7 @@ main li a {
 }
 
 .teaching-toc-link.active {
-  color: var(--color-accent);
+  color: var(--color-accent-dark);
   background-color: rgba(114, 180, 178, 0.2);
   font-weight: var(--font-weight-semibold);
   transition: all var(--transition-fast);
@@ -1084,10 +1123,11 @@ main li a {
   padding: 0 var(--spacing-md);
 }
 
-.page-teaching-content-container section {
-  margin-bottom: var(--spacing-3xl);
-  scroll-margin-top: calc(
-    var(--header-height) + 140px
+/* just change this from section to h2 and 140 to 300 */
+.page-teaching-content-container .section-label {
+  margin-bottom: var(--spacing-2xl);
+  scroll-margin-top: var(
+    --header-height
   ); /* Refined offset for better positioning */
 }
 
@@ -1228,10 +1268,10 @@ main li a {
     background-color: #f9f9f9;
     z-index: 40;
     width: auto;
-    border: none;
+    border-bottom: 1px solid #d7d7d7;
     border-radius: 0;
     padding: 0;
-    max-height: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .teaching-toc-container {
@@ -1260,10 +1300,10 @@ main li a {
     overflow-y: auto; /* Add scrolling if content exceeds available space */
   }
 
-  .teaching-toc-list li {
+  /* .teaching-toc-list li {
     margin-bottom: var(--spacing-xs);
     width: 100%;
-  }
+  } */
 
   .teaching-toc-list .teaching-toc-link {
     display: flex;
@@ -1295,11 +1335,11 @@ main li a {
   .teaching-content-container {
     padding: 0 var(--spacing-md);
   }
-
-  .teaching-section {
-    scroll-margin-top: 140px; /* Reduced mobile offset to bring headings up */
+  /* Reduced mobile offset to bring headings up */
+  /* .teaching-section {
+    scroll-margin-top: 140px; 
     margin-bottom: var(--spacing-4xl);
-  }
+  } */
 
   .teaching-subsection {
     margin-bottom: var(--spacing-lg);
@@ -1409,20 +1449,21 @@ figcaption {
   padding: 0 var(--spacing-md);
 }
 
-.single-case-study-content-container section {
+/* Refined offset for better positioning */
+/* .single-case-study-content-container section {
   margin-bottom: var(--spacing-3xl);
   scroll-margin-top: calc(
     var(--header-height) + 140px
-  ); /* Refined offset for better positioning */
-}
+  ); 
+} */
 
-.single-case-study-content h3 {
+/* h3 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-extrabold);
   line-height: var(--line-height-tight);
   padding: var(--spacing-md) 0 0 0;
   margin-bottom: var(--spacing-md);
-}
+} */
 
 .link-document {
   border: 1px solid var(--color-coral);
@@ -1453,6 +1494,10 @@ figcaption {
   :root {
     --header-height: 80px; /* Larger header on desktop */
     --sidebar-width: 280px; /* TOC sidebar width */
+  }
+
+  .back-to-top {
+    display: none;
   }
 
   .nav-container {
