@@ -3,9 +3,6 @@
 /**
  * Front Page Template
  *
- * This template is used for the homepage when a static front page is set.
- * It maintains all the animations and interactions from the original design.
- *
  * @package Claire_Portfolio
  * @since 1.0.0
  */
@@ -16,13 +13,14 @@ get_header(); ?>
 <section class="hero" aria-labelledby="hero-heading">
     <!-- Background Video -->
     <?php
-    $hero_video = get_theme_mod('hero_video_url', get_template_directory_uri() . '/public/hero-video.mp4');
+    $hero_video = get_theme_mod('hero_video_url', get_template_directory_uri() . '/public/home-video.mp4');
     if ($hero_video) :
     ?>
         <video
             class="hero-video"
             autoplay
             muted
+            poster="<?php echo get_template_directory_uri() . '/public/home-video-poster.jpg' ?>"
             playsinline
             aria-hidden="true"
             preload="metadata">
@@ -137,12 +135,22 @@ get_header(); ?>
                 </ul>
             </div>
         </div>
+        <!-- Case study links -->
+        <?php while (have_posts()) : the_post(); ?>
+            <div>
+                <h3 class="text-heading-3">Examples of my teaching:</h3>
+
+                <?php the_content(); ?>
+
+            </div>
+        <?php endwhile; ?>
 
         <div class="teaching-footer">
             <a href="<?php the_permalink(25); ?>" class="text-link">
                 Learn more about my <strong>teaching</strong>
             </a>
         </div>
+
     </div>
 </section>
 

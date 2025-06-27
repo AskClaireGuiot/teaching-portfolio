@@ -42,9 +42,10 @@ get_header(); ?>
             <ul class="teaching-toc-list" id="teaching-toc-list">
 
                 <li><a href="#introduction" class="teaching-toc-link">Introduction</a></li>
-                <li><a href="#teaching-activities" class="teaching-toc-link">Teaching Activities</a></li>
+                <li><span class="teaching-toc-link">Teaching</span></li>
                 <li>
                     <ul>
+                        <li><a href="#teaching-activities" class="teaching-toc-link">Teaching Activities</a></li>
                         <li><a href="#teaching-philosophy" class="teaching-toc-link">Teaching Philosophy</a></li>
 
                         <li><a href="#evidence-based-strategies" class="teaching-toc-link">Evidence-Based Strategies</a></li>

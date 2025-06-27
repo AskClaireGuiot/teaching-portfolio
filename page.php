@@ -1,8 +1,7 @@
 <?php
+
 /**
- * Page Template
- *
- * This template is used for static pages.
+ *  default Page Template
  *
  * @package Claire_Portfolio
  * @since 1.0.0
@@ -10,67 +9,27 @@
 
 get_header(); ?>
 
-<div class="content-area">
-    <div class="site-main">
+<?php while (have_posts()) : the_post(); ?>
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="page-hero-container">
+            <h1 class="text-heading-1">
+                Design Work
+            </h1>
+        </div>
+    </section>
 
-        <?php while (have_posts()) : the_post(); ?>
+    <section class="page-content">
 
-            <article id="page-<?php the_ID(); ?>" <?php post_class('page-content'); ?>>
+        <div class="page-content-container">
 
-                <header class="entry-header">
-                    <h1 class="entry-title text-heading-1">
-                        <?php the_title(); ?>
-                    </h1>
 
-                    <?php if (has_excerpt()) : ?>
-                        <div class="entry-excerpt text-body-large">
-                            <?php the_excerpt(); ?>
-                        </div>
-                    <?php endif; ?>
-                </header>
 
-                <?php if (has_post_thumbnail()) : ?>
-                    <div class="entry-featured-image">
-                        <?php the_post_thumbnail('large', array('alt' => get_the_title())); ?>
-                    </div>
-                <?php endif; ?>
+            <?php the_content(); ?>
 
-                <div class="entry-content">
-                    <?php
-                    the_content();
+        </div>
+    </section>
 
-                    wp_link_pages(array(
-                        'before' => '<div class="page-links">' . __('Pages:', 'claire-portfolio'),
-                        'after'  => '</div>',
-                    ));
-                    ?>
-                </div>
-
-                <footer class="entry-footer">
-                    <?php
-                    edit_post_link(
-                        sprintf(
-                            wp_kses(
-                                __('Edit <span class="screen-reader-text">%s</span>', 'claire-portfolio'),
-                                array(
-                                    'span' => array(
-                                        'class' => array(),
-                                    ),
-                                )
-                            ),
-                            get_the_title()
-                        ),
-                        '<span class="edit-link">',
-                        '</span>'
-                    );
-                    ?>
-                </footer>
-
-            </article>
-
-        <?php endwhile; ?>
-
-    </div>
-</div>
+<?php endwhile; ?>
 
 <?php get_footer(); ?>

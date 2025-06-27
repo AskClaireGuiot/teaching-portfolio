@@ -99,36 +99,40 @@ export class TypingAnimation {
         }
     }
 
-    init() {
-        if (!this.heroText || prefersReducedMotion()) {
-            if (this.heroText) {
-                const lastRole = this.roles[this.roles.length - 1];
-                this.heroText.innerHTML = `${this.getBaseText()}<span class="scratched-out">${lastRole}${this.getScratchSVG()}${this.getHandwrittenSVG()}</span>`;
-            }
-            return;
+init() {
+    if (!this.heroText || prefersReducedMotion()) {
+        if (this.heroText) {
+            const lastRole = this.roles[this.roles.length - 1];
+            this.heroText.innerHTML = `${this.getBaseText()}<span class="scratched-out">${lastRole}${this.getScratchSVG()}${this.getHandwrittenSVG()}</span>`;
         }
-
-        if (this.replayBtn) {
-            this.replayBtn.addEventListener('click', () => this.replayAnimation());
-        }
-
-        this.initVideo();
-
-        if (this.cursor) {
-            this.cursor.style.display = 'inline-block';
-        }
-
-        // Make test function globally accessible for debugging
-        window.testAnimation = () => this.testAnimationSequence();
-
-        setTimeout(() => this.startAnimation(), this.startDelay);
-
-        window.addEventListener('resize', debounce(() => {
-            if (!this.isAnimating) {
-                this.updateTextFormat();
-            }
-        }, 250));
+        return;
     }
+
+    // 👇 Add this: clear initial text content
+    this.heroText.textContent = '';
+
+    if (this.cursor) {
+        this.cursor.style.visibility = 'hidden'; // Hide cursor initially
+    }
+
+    if (this.replayBtn) {
+        this.replayBtn.addEventListener('click', () => this.replayAnimation());
+    }
+
+    this.initVideo();
+
+    // Make test function globally accessible for debugging
+    window.testAnimation = () => this.testAnimationSequence();
+
+    setTimeout(() => this.startAnimation(), this.startDelay);
+
+    window.addEventListener('resize', debounce(() => {
+        if (!this.isAnimating) {
+            this.updateTextFormat();
+        }
+    }, 250));
+}
+
 
     initVideo() {
         // Video initialization logic will be handled by video module

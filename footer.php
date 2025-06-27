@@ -7,7 +7,7 @@
         <h2 class="text-heading-3">
             Have a course or a project? Need expertise? Let's chat.
         </h2>
-        <a href="mailto:hello@claireguiot.com?subject=Let's get in contact" class="button">
+        <a href="mailto:hello@claireguiot.com?subject=Let's%20get%20in%20contact&body=Hi,%20let%20me%20know%20that%20you're%20a%20human.%20Thanks!" class="button">
             <span>Contact</span>
         </a>
     </div>
@@ -32,7 +32,7 @@
             <p class="footer-disclaimer">
                 <strong>The content</strong> for this website is 88% original with 12% Microsoft Copilot for editing suggestions only.
                 <strong>The design</strong> was created manually using Figma (no AI).
-                <strong>The coding</strong> of this website is an experiment, it was 60% vibe-coded using same.new, with significant manual clean up and adaptations for WP integration.
+                <strong>The coding</strong> of this website is an experiment, it was 60% vibe-coded using same.new, with significant manual clean up and adaptations for WP integration. The clean up is ongoing.
             </p>
 
         </div>
