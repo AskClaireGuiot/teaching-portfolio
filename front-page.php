@@ -10,41 +10,43 @@
 get_header(); ?>
 
 <!-- Hero Section -->
-<section class="hero" aria-labelledby="hero-heading">
-    <!-- Background Video -->
-    <?php
-    $hero_video = get_theme_mod('hero_video_url', get_template_directory_uri() . '/public/home-video.mp4');
-    if ($hero_video) :
-    ?>
-        <video
-            class="hero-video"
-            autoplay
-            muted
-            poster="<?php echo get_template_directory_uri() . '/public/home-video-poster.jpg' ?>"
-            playsinline
-            aria-hidden="true"
-            preload="metadata">
-            <source src="<?php echo esc_url($hero_video); ?>" type="video/mp4">
-            <!-- Fallback for browsers that don't support video -->
-            <?php _e('Your browser does not support the video tag.', 'claire-portfolio'); ?>
-        </video>
-    <?php endif; ?>
-
-    <!-- Video Loading Placeholder -->
-    <div class="hero-video-placeholder" aria-hidden="true"></div>
-
-    <h1 id="hero-heading" class="hero-text text-heading-1">
+<div class="hero-container">
+    <section class="hero" aria-labelledby="hero-heading">
+        <!-- Background Video -->
         <?php
-        $hero_title = get_theme_mod('hero_title', 'Hello, my name is Claire. I am an instructor');
-        $hero_roles = get_theme_mod('hero_roles', 'an instructor, a designer, a developer');
+        $hero_video = get_theme_mod('hero_video_url', get_template_directory_uri() . '/public/home-video.mp4');
+        if ($hero_video) :
         ?>
-        <span class="hero-intro"><?php echo esc_html($hero_title); ?></span>
-        <span class="hero-cursor" aria-hidden="true">|</span>
-    </h1>
-    <button class="replay-btn" aria-label="<?php _e('Replay typing animation', 'claire-portfolio'); ?>">
-        <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span> <span><?php _e('REPLAY ANIMATION', 'claire-portfolio'); ?></span>
-    </button>
-</section>
+            <video
+                class="hero-video"
+                autoplay
+                muted
+                poster="<?php echo get_template_directory_uri() . '/public/home-video-poster.jpg' ?>"
+                playsinline
+                aria-hidden="true"
+                preload="metadata">
+                <source src="<?php echo esc_url($hero_video); ?>" type="video/mp4">
+                <!-- Fallback for browsers that don't support video -->
+                <?php _e('Your browser does not support the video tag.', 'claire-portfolio'); ?>
+            </video>
+        <?php endif; ?>
+
+        <!-- Video Loading Placeholder -->
+        <div class="hero-video-placeholder" aria-hidden="true"></div>
+
+        <h1 id="hero-heading" class="hero-text text-heading-1">
+            <?php
+            $hero_title = get_theme_mod('hero_title', 'Hello, my name is Claire. I am an instructor');
+            $hero_roles = get_theme_mod('hero_roles', 'an instructor, a designer, a developer');
+            ?>
+            <span class="hero-intro"><?php echo esc_html($hero_title); ?></span>
+            <span class="hero-cursor" aria-hidden="true">|</span>
+        </h1>
+        <button class="replay-btn" aria-label="<?php _e('Replay typing animation', 'claire-portfolio'); ?>">
+            <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span> <span><?php _e('REPLAY ANIMATION', 'claire-portfolio'); ?></span>
+        </button>
+    </section>
+</div>
 
 <!-- Mission Statement Section -->
 <section class="mission" aria-labelledby="mission-heading">
@@ -78,6 +80,11 @@ get_header(); ?>
             As an instructor with one foot in post-secondary, and the other in the tech industry, I approach each learning experience with a design thinking mindset: empathize, define, ideate, prototype, test and iterate.
             I aim to develop effective, student-centered approaches to teaching and learning that bridge traditional and digital environments.
         </p>
+        <div class="teaching-footer">
+            <a href="<?php the_permalink(25); ?>" class="text-link">
+                Learn more about my <strong>teaching</strong>
+            </a>
+        </div>
         <div class="teaching-grid">
             <div>
                 <h3 class="text-heading-3">How I teach:</h3>
@@ -145,11 +152,7 @@ get_header(); ?>
             </div>
         <?php endwhile; ?>
 
-        <div class="teaching-footer">
-            <a href="<?php the_permalink(25); ?>" class="text-link">
-                Learn more about my <strong>teaching</strong>
-            </a>
-        </div>
+
 
     </div>
 </section>

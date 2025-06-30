@@ -493,20 +493,28 @@ main li a {
    Hero Section - Mobile First
    ========================================================================== */
 
+.hero-container {
+  /* background-image: url("../../public/test.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+}
+
 .hero {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
   gap: var(--spacing-xl);
-  min-height: calc(100vh - var(--header-height));
+  /* min-height: calc(100vh - var(--header-height)); */
+  min-height: 400px;
   padding: var(--spacing-3xl) var(--spacing-md) var(--spacing-xl);
-  background-color: var(--color-background);
+  /* background-color: var(--color-background); */
   position: relative;
   max-width: var(--container-max-width);
   margin: 0 auto;
   width: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 /* Hero Background Video */
@@ -519,6 +527,7 @@ main li a {
   object-fit: contain;
   pointer-events: none; /* Ensure video doesn't interfere with interactions */
   transition: opacity var(--transition-normal);
+  display: none;
 }
 
 /* Video Loading Placeholder */
@@ -528,11 +537,11 @@ main li a {
   left: 0;
   width: 100%;
   height: 60%;
-  background: linear-gradient(
+  /* background: linear-gradient(
     135deg,
     rgba(114, 180, 178, 0.1) 0%,
     rgba(255, 107, 107, 0.1) 100%
-  );
+  ); */
   z-index: -2; /* Behind video */
   opacity: 1;
   transition: opacity var(--transition-slow);
