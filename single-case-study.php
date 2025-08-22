@@ -13,7 +13,15 @@ get_header(); ?>
     <section class="single-case-study-hero <?php if (has_post_thumbnail()) : ?>thumbnail<?php endif; ?>">
 
         <div class="single-case-study-hero-container">
-            <span class="breadcrumb"><a href="<?php the_permalink(25); ?>">Teaching</a> > Case Study</span>
+            <span class="breadcrumb"><?php
+                                        $category = get_the_category();
+                                        if (! empty($category)) {
+                                            $custom_link = esc_url(get_permalink(236));
+                                            $cat_name = esc_html($category[0]->name);
+                                            echo '<a href="' . $custom_link . '">' . $cat_name . '</a>';
+                                        }
+                                        ?>
+                </a> > Case Study</span>
             <h1 class="text-heading-1"><?php the_title(); ?></h1>
             <span class="date"><?php the_date(); ?>
             </span>

@@ -18,7 +18,7 @@ get_header(); ?>
             </h1>
         </div>
         <div class="about-hero-video-container">
-            <video muted playsinline preload="metadata">
+            <video muted playsinline preload="metadata" poster="/public/forest-walk-poster.png">
                 <source src="<?php echo get_template_directory_uri() . '/public/forest-walk.mp4' ?>" type="video/mp4">
                 Your browser does not support the video tag.
             </video>

@@ -77,8 +77,7 @@ get_header(); ?>
             Set the stage for inspired learning
         </h2>
         <p class="teaching-intro text-body-large">
-            As an instructor with one foot in post-secondary, and the other in the tech industry, I approach each learning experience with a design thinking mindset: empathize, define, ideate, prototype, test and iterate.
-            I aim to develop effective, student-centered approaches to teaching and learning that bridge traditional and digital environments.
+            As an instructor with one foot in post-secondary education and the other in the tech industry, I bring a design thinking mindset to every learning experience. I create instruction that is intentional, inclusive, and grounded in how people actually learn. Blending narrative and pedagogy, I teach with a focus on cognitive load, engagement, accessibility, and clear learner pathways.
         </p>
         <div class="teaching-footer">
             <a href="<?php the_permalink(25); ?>" class="text-link">
@@ -157,6 +156,26 @@ get_header(); ?>
     </div>
 </section>
 
+<!-- Design Section -->
+<section class="design" aria-labelledby="design-heading">
+    <div class="design-container">
+        <span class="section-label">Design</span>
+        <h2 class="text-heading-2">
+            Visual storytelling grounded in systems thinking
+        </h2>
+        <p class="teaching-intro text-body-large">
+            With a strong visual sensibility and a deep respect for content, I translate complex ideas into scalable and compelling experiences that meet real user needs. I'm a versatile, collaborative designer—just as comfortable crafting a museum exhibit as I am designing a web app.
+        </p>
+        <div class="teaching-footer">
+            <a href="<?php the_permalink(236); ?>" class="text-link">
+                Learn more about my <strong>design work </strong>
+            </a>
+        </div>
+
+    </div>
+
+    </div>
+</section>
 <?php
 // Add hero roles data for JavaScript
 $hero_roles_array = array_map('trim', explode(',', get_theme_mod('hero_roles', 'an instructor, a designer, a developer')));

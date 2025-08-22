@@ -58,3 +58,36 @@ export function handleError(error, context = 'Application') {
     console.error(`${context} error:`, error);
     // In production, you might want to send this to an error tracking service
 }
+
+// remove image from case study if small width
+document.addEventListener("DOMContentLoaded", function () {
+  const caseStudyLinks = document.querySelectorAll(".case-study-link");
+  const desktopOnlyElements = document.querySelectorAll(".desktop-only");
+  const mobileOnlyElements = document.querySelectorAll(".mobile-only");
+
+  caseStudyLinks.forEach(link => {
+    const linkWidth = link.offsetWidth;
+
+    if (linkWidth < 500) {
+      // Hide desktop-only elements
+      desktopOnlyElements.forEach(el => {
+        el.style.display = "none";
+      });
+
+      // Show mobile-only elements
+      mobileOnlyElements.forEach(el => {
+        el.style.display = "block";
+      });
+    } else {
+      // Apply CSS to .case-study-link figure if width >= 500
+      const figures = link.querySelectorAll("figure");
+      figures.forEach(fig => {
+        fig.style.width = "100%";
+        fig.style.height = "100%";
+        fig.style.overflow = "hidden";
+      });
+    }
+  });
+});
+
+

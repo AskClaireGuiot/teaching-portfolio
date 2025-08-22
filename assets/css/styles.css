@@ -84,6 +84,10 @@ body {
   --z-modal: 1000;
   --z-tooltip: 1100;
 }
+.desktop-only,
+.mobile-only {
+  display: none;
+}
 
 /* ==========================================================================
    Base HTML Elements - Mobile First
@@ -693,12 +697,14 @@ main li a {
    Teaching Section - Mobile First
    ========================================================================== */
 
-.teaching {
+.teaching,
+.design {
   padding: var(--spacing-3xl) var(--spacing-md); /* Mobile padding */
   background-color: var(--color-background);
 }
 
-.teaching-container {
+.teaching-container,
+.design-container {
   max-width: var(--container-max-width);
   margin: 0 auto;
 }
@@ -751,6 +757,14 @@ main li a {
 
 .teaching-footer {
   text-align: left;
+}
+
+/* ==========================================================================
+   Design Section - Mobile First
+   ========================================================================== */
+
+.design {
+  background-color: var(--color-neutral);
 }
 
 /* ==========================================================================
@@ -1254,24 +1268,24 @@ main li a {
 }
 
 /* Hide desktop image on mobile, and vice versa */
-.case-study-link .desktop-only {
+/* .case-study-link .desktop-only {
   display: none;
-}
+} */
 
 @media (min-width: 768px) {
-  .case-study-link .mobile-only {
+  /* .case-study-link .mobile-only {
     display: none;
   }
-
+*/
   .case-study-link .desktop-only {
     display: block;
   }
 
-  .case-study-link figure {
+  /* .case-study-link figure {
     width: 100%;
     height: 100%;
     overflow: hidden;
-  }
+  } */
 }
 
 .emphasis-block ul {
@@ -1469,7 +1483,7 @@ figcaption {
 .aspect-ratio-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 20 / 9;
   overflow: hidden;
 }
 
@@ -1779,7 +1793,8 @@ figcaption {
     justify-content: center;
   }
 
-  .teaching {
+  .teaching,
+  .design {
     padding: var(--spacing-5xl) var(--spacing-lg);
   }
 
@@ -1886,6 +1901,7 @@ figcaption {
 @media only screen and (min-width: 768px) {
   .about-hero-video-container {
     padding: 0;
+    aspect-ratio: 16 / 5;
   }
   .about-hero video {
     width: 100%;

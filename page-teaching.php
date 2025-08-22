@@ -42,6 +42,7 @@ get_header(); ?>
             <ul class="teaching-toc-list" id="teaching-toc-list">
 
                 <li><a href="#introduction" class="teaching-toc-link">Introduction</a></li>
+                <li><a href="#case-studies" class="teaching-toc-link">Case Studies</a></li>
                 <li><span class="teaching-toc-link">Teaching</span></li>
                 <li>
                     <ul>

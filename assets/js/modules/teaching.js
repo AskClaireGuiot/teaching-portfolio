@@ -258,7 +258,7 @@ export class TeachingTOC {
                 if (targetSection) {
                     const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
                     // For sticky TOC layout, use optimized offset based on screen size
-                    const additionalOffset = window.innerWidth > 768 ? 80 : 460; // Increased mobile offset to position h2 below collapsed TOC
+                    const additionalOffset = window.innerWidth > 768 ? 64 : 460; // Increased mobile offset to position h2 below collapsed TOC
                     const offset = headerHeight + additionalOffset;
                     const targetPosition = targetSection.offsetTop - offset;
 
