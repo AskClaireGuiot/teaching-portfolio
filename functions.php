@@ -301,6 +301,33 @@ function claire_portfolio_customize_register($wp_customize)
 }
 add_action('customize_register', 'claire_portfolio_customize_register');
 
+
+function my_html_shortcode($atts)
+{
+    // Define default attributes and merge with user-defined attributes
+    $atts = shortcode_atts(
+        array(
+            'file' => 'canada-pse-crisis.html', // Default HTML file
+            'path' => get_stylesheet_directory() . '/', // Default path
+        ),
+        $atts,
+        'my_html'
+    );
+
+    $file_path = $atts['path'] . $atts['file'];
+
+    // Check if the file exists and is readable
+    if (file_exists($file_path) && is_readable($file_path)) {
+        ob_start(); // Start output buffering
+        include $file_path; // Include the HTML file
+        return ob_get_clean(); // Return the buffered content
+    } else {
+        return '<!-- HTML file not found or not readable: ' . esc_html($file_path) . ' -->';
+    }
+}
+add_shortcode('my_html', 'my_html_shortcode');
+
+
 /**
  * Body Classes
  */

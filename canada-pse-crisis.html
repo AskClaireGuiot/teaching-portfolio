@@ -1,0 +1,399 @@
+<style>
+  /* General page styles */
+
+  h3 {
+    margin-top: 1em;
+  }
+
+  /* Containers */
+  .cheat-sheet,
+  .infographic {
+    max-width: 800px;
+    margin: 40px auto;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+
+  th,
+  td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+  }
+
+  /* Panels / Highlight boxes */
+  .panel {
+    background-color: var(--color-neutral);
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+  }
+
+  /* Timeline */
+  .timeline {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 20px 0;
+  }
+
+  .timeline-step {
+    /* flex: 0 0 150px; */
+    background-color: var(--color-neutral);
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .stat {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  /* Superscript references */
+  sup {
+    font-size: 0.7em;
+  }
+
+  /* Links */
+  a {
+    color: #0066cc;
+  }
+
+  /* Triangle infographic */
+  .triangle-container {
+    position: relative;
+    height: 280px;
+    margin: 50px auto;
+    max-width: 600px;
+  }
+
+  .triangle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 260px solid #ccc;
+  }
+
+  .triangle-label {
+    position: absolute;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  .triangle-top {
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #eef;
+  }
+
+  .triangle-bottom-left {
+    bottom: 0;
+    left: 0;
+    background: #fee;
+  }
+
+  .triangle-bottom-right {
+    bottom: 0;
+    right: 10%;
+    background: #efe;
+  }
+
+  .triangle-text {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    font-size: 0.9em;
+  }
+</style>
+
+<div class="cheat-sheet">
+  <h2 class="section-label">Summary</h2>
+  <p>
+    This cheat sheet gives a quick look at the financial challenges Canadian
+    post-secondary education (PSE) is facing, with a spotlight on North Island
+    College (NIC), a community college on Vancouver Island, BC. This page covers
+    trends in government funding, reliance on international student enrollment,
+    and policy changes. Please use this as a guide to get up to speed on what’s
+    happening and to help support advocacy for sustainable funding and stable
+    programs.
+  </p>
+  <hr class="wp-block-separator has-alpha-channel-opacity" />
+
+  <h3>Key Trends (2000–2025)</h3>
+  <ul style="background-color: transparent">
+    <li>
+      Government funding dropped from ~55% (2000)
+      <sup><a href="#ref1">1</a></sup> to ~30–35% (2020s)
+      <sup><a href="#ref2">2</a></sup
+      >.
+    </li>
+    <li>
+      Domestic tuition increases capped at 0–2% annually
+      <sup><a href="#ref3">3</a></sup
+      >.
+    </li>
+    <li>
+      => International student fees have become a vital source of revenue to
+      help fill the gap.
+    </li>
+    <li>
+      In 2024, the federal government introduced caps on new study permits and
+      tightened eligibility for Post-Graduation Work Permits (PGWP) and Open
+      Work Permits (OWP), aiming to reduce pressure on housing and immigration
+      levels
+      <sup><a href="#ref7">7</a></sup
+      >.
+    </li>
+    <li>
+      => As a result, international enrollment across Canada has dropped
+      significantly—by an average of about 45%<sup><a href="#ref11">11</a></sup
+      >.
+    </li>
+  </ul>
+
+  <div class="infographic">
+    <h3>PSE Timeline (2000–2025)</h3>
+    <div class="timeline">
+      <div class="timeline-step">
+        <div class="stat">2000</div>
+        <p>
+          Gov’t funding ~55%<sup><a href="#ref1">1</a></sup>
+        </p>
+      </div>
+      <div class="timeline-step">
+        <div class="stat">2010s</div>
+        <p>
+          International enrollment skyrockets<sup><a href="#ref4">4</a></sup>
+        </p>
+      </div>
+      <div class="timeline-step">
+        <div class="stat">2025</div>
+        <p>
+          Federal caps: ↓ permits, PGWP & OWP tightened<sup
+            ><a href="#ref7">7</a></sup
+          >
+        </p>
+      </div>
+      <div class="timeline-step">
+        <div class="stat">2025</div>
+        <p>
+          Avg. 45% ↓ in international enrollment across Canada<sup
+            ><a href="#ref11">11</a></sup
+          >
+        </p>
+      </div>
+    </div>
+
+    <h3>Challenges & Policy Tension</h3>
+    <ul style="background-color: transparent">
+      <li>
+        International enrollment drops due to federal visa restrictions<sup
+          ><a href="#ref7">7</a></sup
+        >.
+      </li>
+      <li>
+        Housing pressures in major cities constrain student numbers<sup
+          ><a href="#ref8">8</a></sup
+        >.
+      </li>
+      <li>
+        Institutions struggle to balance budgets without high international
+        tuition revenue<sup><a href="#ref4">4</a></sup
+        >.
+      </li>
+      <li>
+        Government prioritizes permanent skilled immigration over temporary
+        student flows<sup><a href="#ref9">9</a></sup
+        >.
+      </li>
+    </ul>
+    <div class="triangle-container">
+      <div class="triangle"></div>
+      <div class="triangle-label triangle-top">Housing & Infrastructure</div>
+      <div class="triangle-label triangle-bottom-left">Immigration Policy</div>
+      <div class="triangle-label triangle-bottom-right">PSE Revenue</div>
+      <div class="triangle-text">
+        Relaxing international student would help PSE revenue but worsens
+        housing & conflicts with immigration policy.
+      </div>
+    </div>
+  </div>
+
+  <h3>Recommended Responses for PSE</h3>
+  <ul>
+    <li>
+      Diversify revenue: continuing education, micro-credentials, industry
+      partnerships.
+    </li>
+    <li>
+      Innovate program delivery: hybrid/online learning, co-op programs,
+      short-term certificates.
+    </li>
+    <li>
+      Retention & student experience: advising, support services, pathway
+      programs.
+    </li>
+    <li>
+      Advocacy: engage government for temporary relief and predictable policy
+      measures.
+    </li>
+  </ul>
+
+  <h3>Long-Term Solution</h3>
+  <p>
+    Stable government funding is critical to reduce dependency on international
+    tuition, maintain staff, and ensure quality education<sup
+      ><a href="#ref1">1</a>,<a href="#ref2">2</a></sup
+    >.
+  </p>
+</div>
+
+<div class="emphasis-block">
+  <h3>Faculty: How you can help</h3>
+  Reach out to your union to learn how you can advocate for increased
+  post-secondary funding and help protect programs, jobs, and student access.
+</div>
+<hr class="wp-block-separator has-alpha-channel-opacity" />
+
+<div class="cheat-sheet">
+  <h2>References</h2>
+  <ol>
+    <!-- <li id="ref1">
+          Rieger, Sarah. "How to Fix Canada’s Broke Universities: A Template."
+          <em>National Post</em>, 2025.
+          <a
+            href="https://nationalpost.com/feature/how-to-fix-canadas-broke-universities-a-template"
+            target="_blank"
+          >
+            https://nationalpost.com/feature/how-to-fix-canadas-broke-universities-a-template</a
+          >
+        </li> -->
+
+    <li id="ref11">
+      Canadian Centre for Policy Alternatives. "Student Debt Is Out of Control
+      in Canada." 2023.
+      <a
+        href="https://www.policyalternatives.ca/news-research/student-debt-is-out-of-control-in-canada/?utm_source=chatgpt.com"
+        target="_blank"
+      >
+        https://www.policyalternatives.ca/news-research/student-debt-is-out-of-control-in-canada/?utm_source=chatgpt.com
+      </a>
+    </li>
+    <li id="ref11">
+      Hopper, Tristin. "Canadian Universities Face 45% Drop in International
+      Student Enrolment: Universities Canada."
+      <em>Global News</em>, 29 Aug. 2025,
+      <a
+        href="https://globalnews.ca/news/10738537/universities-canada-international-student-enrolment-drop/"
+        target="_blank"
+      >
+        https://globalnews.ca/news/10738537/universities-canada-international-student-enrolment-drop/ </a
+      >.
+    </li>
+
+    <li id="ref12">
+      Statistics Canada. "University Finances in the Second Year of the
+      Pandemic, 2021/2022." 3 Aug. 2023.
+      <a
+        href="https://www150.statcan.gc.ca/n1/daily-quotidien/230803/dq230803a-eng.htm?utm_source=chatgpt.com"
+        target="_blank"
+      >
+        https://www150.statcan.gc.ca/n1/daily-quotidien/230803/dq230803a-eng.htm?utm_source=chatgpt.com
+      </a>
+    </li>
+    <li id="ref3">
+      CBC News. "Tuition Increases and Caps." <em>CBC</em>, 2023.
+      <a
+        href="https://www.cbc.ca/news/canada/tuition-fees-2023-1.6962233"
+        target="_blank"
+        >https://www.cbc.ca/news/canada/tuition-fees-2023-1.6962233</a
+      >
+    </li>
+    <li id="ref4">
+      North Island College. "Tuition and Costs for International Students
+      2024–25." <em>NIC</em>, 2024.
+      <a
+        href="https://www.nic.bc.ca/admissions/international-students/tuition-and-costs/index.html"
+        target="_blank"
+        >https://www.nic.bc.ca/admissions/international-students/tuition-and-costs/index.html</a
+      >
+    </li>
+    <li id="ref5">
+      Vancouver Island Free Daily. "North Island College Adjusts Programs and
+      Staffing Amid Declining International Enrolment." 2025.
+      <a
+        href="https://www.vancouverislandfreedaily.com/local-news/north-island-college-adjusts-programs-staffing-amid-declining-international-enrolment-7804170"
+        target="_blank"
+        >https://www.vancouverislandfreedaily.com/local-news/north-island-college-adjusts-programs-staffing-amid-declining-international-enrolment-7804170</a
+      >
+    </li>
+    <li id="ref6">
+      North Island College. "2025–26 Budget Announcement." <em>NIC</em>, 2025.
+      <a
+        href="https://www.nic.bc.ca/about/news/stories/2025-26-budget.html"
+        target="_blank"
+        >https://www.nic.bc.ca/about/news/stories/2025-26-budget.html</a
+      >
+    </li>
+    <li id="ref7">
+      Immigration, Refugees and Citizenship Canada. "Study Permit & PGWP
+      Changes." 2025.
+      <a
+        href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit.html"
+        target="_blank"
+        >https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit.html</a
+      >
+    </li>
+    <li id="ref8">
+      Canada Mortgage and Housing Corporation. "Canadian Housing Market
+      Reports." 2025.
+      <a
+        href="https://www.cmhc-schl.gc.ca/en/housing-market-data-reports"
+        target="_blank"
+        >https://www.cmhc-schl.gc.ca/en/housing-market-data-reports</a
+      >
+    </li>
+    <li id="ref9">
+      Immigration, Refugees and Citizenship Canada. "Immigration Plan 2024."
+      2024.
+      <a
+        href="https://www.canada.ca/en/immigration-refugees-citizenship/news/2024/immigration-plan.html"
+        target="_blank"
+        >https://www.canada.ca/en/immigration-refugees-citizenship/news/2024/immigration-plan.html</a
+      >
+    </li>
+    <li id="ref10">
+      Domae, Lisa. "Following Up on Today’s College Conversation." Office of the
+      President, North Island College, 5 Sept. 2025.
+      <a
+        href="https://www.nic.bc.ca/about/news/stories/college-conversation-budget-update.html"
+        target="_blank"
+        >https://www.nic.bc.ca/about/news/stories/college-conversation-budget-update.html</a
+      >
+    </li>
+    <li id="ref11">
+      Previl, Sean. "International Student Enrolment Down 45 Per Cent,
+      Universities Canada Says." <em>Global News</em>, 7 Sept. 2024,
+      <a
+        href="https://globalnews.ca/news/10738537/universities-canada-international-student-enrolment-drop/"
+        target="_blank"
+      >
+        https://globalnews.ca/news/10738537/universities-canada-international-student-enrolment-drop/ </a
+      >.
+    </li>
+  </ol>
+</div>
