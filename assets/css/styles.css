@@ -162,7 +162,7 @@ h2,
 
 h3,
 .text-heading-3 {
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-extrabold);
   line-height: var(--line-height-tight);
   padding: var(--spacing-md) 0 0 0;
