@@ -87,6 +87,12 @@ body {
   --z-tooltip: 1100;
 }
 
+
+
+.no-gap {
+  gap: 0;
+}
+
 .desktop-only,
 .mobile-only {
   display: none;
