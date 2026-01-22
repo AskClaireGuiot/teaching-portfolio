@@ -98,6 +98,10 @@ body {
   margin: 0;
 }
 
+.no-gap .wp-block-column {
+  align-self: initial;
+}
+
 .desktop-only,
 .mobile-only {
   display: none;
