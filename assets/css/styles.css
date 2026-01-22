@@ -91,6 +91,7 @@ body {
 
 .no-gap {
   gap: 0;
+  margin-bottom: 0;
 }
 
 .desktop-only,
