@@ -152,17 +152,6 @@ get_header(); ?>
                 </ul>
             </div>
         </div>
-        <!-- Case study links -->
-        <?php while (have_posts()) : the_post(); ?>
-            <div>
-                <h3 class="text-heading-3">Examples of my teaching:</h3>
-
-                <?php the_content(); ?>
-
-            </div>
-        <?php endwhile; ?>
-
-
 
     </div>
 </section>
@@ -186,6 +175,17 @@ get_header(); ?>
     </div>
 
     </div>
+</section>
+<section>
+    <!-- Case study links -->
+    <?php while (have_posts()) : the_post(); ?>
+        <div>
+            <h3 class="text-heading-3">Case Studies:</h3>
+
+            <?php the_content(); ?>
+
+        </div>
+    <?php endwhile; ?>
 </section>
 <?php
 // Add hero roles data for JavaScript
