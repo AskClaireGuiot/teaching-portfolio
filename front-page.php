@@ -176,7 +176,7 @@ get_header(); ?>
 
     </div>
 </section>
-<section>
+<section class="teaching">
     <!-- Case study links -->
     <?php while (have_posts()) : the_post(); ?>
         <div>
