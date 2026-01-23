@@ -1813,7 +1813,7 @@ figcaption {
     justify-content: flex-start;
     /* flex-direction: row; */
     gap: 0;
-    padding: 80px var(--spacing-lg) 240px;
+    padding: 80px var(--spacing-lg) 80px;
   }
 
   /* Desktop responsive typography overrides */
@@ -1851,10 +1851,7 @@ figcaption {
 
 
   .replay-btn {
-    /* position: absolute;
-    bottom: var(--spacing-4xl);
-    right: 0;
-    margin: 0; */
+    margin: 0;
   }
 
   .replay-btn:hover {
