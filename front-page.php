@@ -151,6 +151,52 @@ get_header(); ?>
                     </li>
                 </ul>
             </div>
+            <?php
+            // Store the copied block markup in a PHP variable
+            $pattern_teaching = '
+            <!-- wp:columns -->
+<div class="wp-block-columns" id="case-studies"><!-- wp:column {"width":"100%"} -->
+<div class="wp-block-column" style="flex-basis:100%"><!-- wp:query {"queryId":29,"query":{"perPage":1,"pages":0,"offset":0,"postType":"case-study","order":"desc","orderBy":"date","author":"","search":"Ctrl+Shift: Posters that Activate","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"categories":["posts"],"patternName":"core/query-medium-posts","name":"Case Study Link"},"className":"case-study-link"} -->
+<div class="wp-block-query case-study-link"><!-- wp:post-template -->
+<!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide"><!-- wp:column {"width":""} -->
+<div class="wp-block-column"><!-- wp:paragraph {"className":"section-label"} -->
+<p class="section-label">Category: TEACHING</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:post-title /-->
+
+<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"auto","sizeSlug":"large","className":"mobile-only"} /-->
+
+<!-- wp:post-excerpt {"moreText":"Read more"} /--></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"33%","className":"desktop-only"} -->
+<div class="wp-block-column desktop-only" style="flex-basis:33%"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"auto","sizeSlug":"large"} /--></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+<!-- /wp:post-template --></div>
+<!-- /wp:query --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"100%"} -->
+<div class="wp-block-column" style="flex-basis:100%"><!-- wp:query {"queryId":29,"query":{"perPage":1,"pages":0,"offset":0,"postType":"case-study","order":"desc","orderBy":"date","author":"","search":"multi-dimensional learning environments","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"categories":["posts"],"patternName":"core/query-medium-posts","name":"Case Study Link"},"className":"case-study-link"} -->
+<div class="wp-block-query case-study-link"><!-- wp:post-template -->
+<!-- wp:paragraph {"className":"section-label"} -->
+<p class="section-label">Category: TEACHING</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:post-title /-->
+
+<!-- wp:post-excerpt {"moreText":"Read more"} /-->
+<!-- /wp:post-template --></div>
+<!-- /wp:query --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->';
+
+            // Use do_blocks() to render the blocks
+            echo do_blocks($pattern_teaching);
+            ?>
         </div>
 
     </div>
@@ -168,7 +214,7 @@ get_header(); ?>
         </p>
         <?php
         // Store the copied block markup in a PHP variable
-        $pattern_content = '
+        $pattern_design = '
 <!-- wp:columns -->
 <div class="wp-block-columns" id="case-studies"><!-- wp:column {"width":"100%"} -->
 <div class="wp-block-column" style="flex-basis:100%"><!-- wp:query {"queryId":29,"query":{"perPage":1,"pages":0,"offset":0,"postType":"case-study","order":"desc","orderBy":"date","author":"","search":"TradeFolio: E-Passport for Trades Apprentices","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"categories":["posts"],"patternName":"core/query-medium-posts","name":"Case Study Link"},"className":"case-study-link"} -->
@@ -220,7 +266,7 @@ get_header(); ?>
 <!-- /wp:columns -->';
 
         // Use do_blocks() to render the blocks
-        echo do_blocks($pattern_content);
+        echo do_blocks($pattern_design);
         ?>
         <div class="teaching-footer">
             <a href="<?php the_permalink(236); ?>" class="text-link">
