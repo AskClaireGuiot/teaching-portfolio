@@ -684,6 +684,10 @@ main li a {
   stroke-dashoffset: 1000;
 }
 
+.hero-button {
+  padding-top: 160px;
+}
+
 /* ==========================================================================
    Mission Section - Mobile First
    ========================================================================== */
@@ -1845,9 +1849,6 @@ figcaption {
     max-width: 450px;
   }
 
-  .hero-button {
-    padding-top: 120px;
-  }
 
   .replay-btn {
     /* position: absolute;
