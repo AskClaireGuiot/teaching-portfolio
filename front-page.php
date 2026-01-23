@@ -278,9 +278,9 @@ get_header(); ?>
 
     </div>
 </section>
-<section class="teaching">
+<!-- <section class="teaching">
     <div class="teaching-container">
-        <!-- Case study links -->
+
         <?php while (have_posts()) : the_post(); ?>
             <div>
                 <span class="section-label">Case Studies</span>
@@ -293,7 +293,7 @@ get_header(); ?>
 
 
     </div>
-</section>
+</section> -->
 <?php
 // Add hero roles data for JavaScript
 $hero_roles_array = array_map('trim', explode(',', get_theme_mod('hero_roles', 'an instructor, a designer, a developer')));
