@@ -181,7 +181,7 @@ get_header(); ?>
         <!-- Case study links -->
         <?php while (have_posts()) : the_post(); ?>
             <div>
-                <h3 class="text-heading-3">Case Studies:</h3>
+                <span class="section-label">Case Studies</span>
 
                 <?php the_content(); ?>
 
