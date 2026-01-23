@@ -224,7 +224,7 @@ get_header(); ?>
 <!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":""} -->
 <div class="wp-block-column"><!-- wp:paragraph {"className":"section-label"} -->
-<p class="section-label">Category: DESIGN</p>
+<p class="section-label">CASE STUDY: DESIGN</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:post-title /-->
@@ -248,7 +248,7 @@ get_header(); ?>
 <!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":""} -->
 <div class="wp-block-column"><!-- wp:paragraph {"className":"section-label"} -->
-<p class="section-label">Category: DESIGN</p>
+<p class="section-label">CASE STUDY: DESIGN</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:post-title /-->
