@@ -187,6 +187,66 @@ get_header(); ?>
 
             </div>
         <?php endwhile; ?>
+        <?php
+        echo do_blocks('<!-- wp:pattern {"slug":"teaching-portfolio/design-case-studies"} /-->');
+        ?>
+        <?php
+        // Store the copied block markup in a PHP variable
+        $pattern_content = '
+<!-- wp:columns -->
+<div class="wp-block-columns" id="case-studies"><!-- wp:column {"width":"100%"} -->
+<div class="wp-block-column" style="flex-basis:100%"><!-- wp:query {"queryId":29,"query":{"perPage":1,"pages":0,"offset":0,"postType":"case-study","order":"desc","orderBy":"date","author":"","search":"TradeFolio: E-Passport for Trades Apprentices","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"categories":["posts"],"patternName":"core/query-medium-posts","name":"Case Study Link"},"className":"case-study-link"} -->
+<div class="wp-block-query case-study-link"><!-- wp:post-template -->
+<!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide"><!-- wp:column {"width":""} -->
+<div class="wp-block-column"><!-- wp:paragraph {"className":"section-label"} -->
+<p class="section-label">Category: DESIGN</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:post-title /-->
+
+<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"auto","sizeSlug":"large","className":"mobile-only"} /-->
+
+<!-- wp:post-excerpt {"moreText":"Read more"} /--></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"33%","className":"desktop-only"} -->
+<div class="wp-block-column desktop-only" style="flex-basis:33%"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"auto","sizeSlug":"large"} /--></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+<!-- /wp:post-template --></div>
+<!-- /wp:query --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"100%"} -->
+<div class="wp-block-column" style="flex-basis:100%"><!-- wp:query {"queryId":29,"query":{"perPage":1,"pages":0,"offset":0,"postType":"case-study","order":"desc","orderBy":"date","author":"","search":"The Cumberland Museum and Archives: Digital Storytelling","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"categories":["posts"],"patternName":"core/query-medium-posts","name":"Case Study Link"},"className":"case-study-link"} -->
+<div class="wp-block-query case-study-link"><!-- wp:post-template -->
+<!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide"><!-- wp:column {"width":""} -->
+<div class="wp-block-column"><!-- wp:paragraph {"className":"section-label"} -->
+<p class="section-label">Category: DESIGN</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:post-title /-->
+
+<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"auto","sizeSlug":"large","className":"mobile-only"} /-->
+
+<!-- wp:post-excerpt {"moreText":"Read more"} /--></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"33%","className":"desktop-only"} -->
+<div class="wp-block-column desktop-only" style="flex-basis:33%"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"auto","sizeSlug":"large"} /--></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+<!-- /wp:post-template --></div>
+<!-- /wp:query --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->';
+
+        // Use do_blocks() to render the blocks
+        echo do_blocks($pattern_content);
+        ?>
+
     </div>
 </section>
 <?php
