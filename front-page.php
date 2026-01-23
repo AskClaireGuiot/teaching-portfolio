@@ -166,30 +166,6 @@ get_header(); ?>
         <p class="teaching-intro text-body-large">
             With a strong visual sensibility and a deep respect for content, I translate complex ideas into scalable and compelling experiences that meet real user needs. I'm a versatile, collaborative designer—just as comfortable crafting a museum exhibit as I am designing a web app.
         </p>
-        <div class="teaching-footer">
-            <a href="<?php the_permalink(236); ?>" class="text-link">
-                Learn more about my <strong>design work </strong>
-            </a>
-        </div>
-
-    </div>
-
-    </div>
-</section>
-<section class="teaching">
-    <div class="teaching-container">
-        <!-- Case study links -->
-        <?php while (have_posts()) : the_post(); ?>
-            <div>
-                <span class="section-label">Case Studies</span>
-
-                <?php the_content(); ?>
-
-            </div>
-        <?php endwhile; ?>
-        <!-- <?php
-                echo do_blocks('<!-- wp:pattern {"slug":"teaching-portfolio/design-case-studies"} /-->');
-                ?> -->
         <?php
         // Store the copied block markup in a PHP variable
         $pattern_content = '
@@ -246,6 +222,29 @@ get_header(); ?>
         // Use do_blocks() to render the blocks
         echo do_blocks($pattern_content);
         ?>
+        <div class="teaching-footer">
+            <a href="<?php the_permalink(236); ?>" class="text-link">
+                Learn more about my <strong>design work </strong>
+            </a>
+        </div>
+
+    </div>
+
+    </div>
+</section>
+<section class="teaching">
+    <div class="teaching-container">
+        <!-- Case study links -->
+        <?php while (have_posts()) : the_post(); ?>
+            <div>
+                <span class="section-label">Case Studies</span>
+
+                <?php the_content(); ?>
+
+            </div>
+        <?php endwhile; ?>
+
+
 
     </div>
 </section>
