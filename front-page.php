@@ -151,9 +151,10 @@ get_header(); ?>
                     </li>
                 </ul>
             </div>
-            <?php
-            // Store the copied block markup in a PHP variable
-            $pattern_teaching = '
+        </div>
+        <?php
+        // Store the copied block markup in a PHP variable
+        $pattern_teaching = '
             <!-- wp:columns -->
 <div class="wp-block-columns" id="case-studies"><!-- wp:column {"width":"100%"} -->
 <div class="wp-block-column" style="flex-basis:100%"><!-- wp:query {"queryId":29,"query":{"perPage":1,"pages":0,"offset":0,"postType":"case-study","order":"desc","orderBy":"date","author":"","search":"Ctrl+Shift: Posters that Activate","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"categories":["posts"],"patternName":"core/query-medium-posts","name":"Case Study Link"},"className":"case-study-link"} -->
@@ -194,10 +195,10 @@ get_header(); ?>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->';
 
-            // Use do_blocks() to render the blocks
-            echo do_blocks($pattern_teaching);
-            ?>
-        </div>
+        // Use do_blocks() to render the blocks
+        echo do_blocks($pattern_teaching);
+        ?>
+
 
     </div>
 </section>
