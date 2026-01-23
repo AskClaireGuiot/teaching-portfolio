@@ -152,6 +152,7 @@ get_header(); ?>
                 </ul>
             </div>
         </div>
+        <h3 class="text-heading-3">Examples of my teaching:</h3>
         <?php
         // Store the copied block markup in a PHP variable
         $pattern_teaching = '
@@ -162,7 +163,7 @@ get_header(); ?>
 <!-- wp:columns {"align":"wide"} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":""} -->
 <div class="wp-block-column"><!-- wp:paragraph {"className":"section-label"} -->
-<p class="section-label">Category: TEACHING</p>
+<p class="section-label">CASE STUDY: TEACHING</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:post-title /-->
@@ -184,7 +185,7 @@ get_header(); ?>
 <div class="wp-block-column" style="flex-basis:100%"><!-- wp:query {"queryId":29,"query":{"perPage":1,"pages":0,"offset":0,"postType":"case-study","order":"desc","orderBy":"date","author":"","search":"multi-dimensional learning environments","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"categories":["posts"],"patternName":"core/query-medium-posts","name":"Case Study Link"},"className":"case-study-link"} -->
 <div class="wp-block-query case-study-link"><!-- wp:post-template -->
 <!-- wp:paragraph {"className":"section-label"} -->
-<p class="section-label">Category: TEACHING</p>
+<p class="section-label">CASE STUDY: TEACHING</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:post-title /-->
