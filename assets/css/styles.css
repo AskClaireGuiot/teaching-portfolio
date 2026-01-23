@@ -1845,11 +1845,15 @@ figcaption {
     max-width: 450px;
   }
 
+  .hero-button {
+    padding-top: 120px;
+  }
+
   .replay-btn {
-    position: absolute;
+    /* position: absolute;
     bottom: var(--spacing-4xl);
     right: 0;
-    margin: 0;
+    margin: 0; */
   }
 
   .replay-btn:hover {

@@ -45,14 +45,15 @@ get_header(); ?>
             <span class="hero-cursor" aria-hidden="true">|</span>
         </h1>
         <div class="hero-button">
+
+            <button class="replay-btn" aria-label="<?php _e('Replay typing animation', 'claire-portfolio'); ?>">
+                <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span> <span><?php _e('REPLAY ANIMATION', 'claire-portfolio'); ?></span>
+            </button>
             <p>
                 <b><?php
                     echo date('F Y');
                     ?>:</b> This site is a working draft and a space for experimentation. Please pardon anything that appears broken or unfinished.
             </p>
-            <button class="replay-btn" aria-label="<?php _e('Replay typing animation', 'claire-portfolio'); ?>">
-                <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span> <span><?php _e('REPLAY ANIMATION', 'claire-portfolio'); ?></span>
-            </button>
         </div>
 
     </section>
