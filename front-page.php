@@ -187,9 +187,9 @@ get_header(); ?>
 
             </div>
         <?php endwhile; ?>
-        <?php
-        echo do_blocks('<!-- wp:pattern {"slug":"teaching-portfolio/design-case-studies"} /-->');
-        ?>
+        <!-- <?php
+                echo do_blocks('<!-- wp:pattern {"slug":"teaching-portfolio/design-case-studies"} /-->');
+                ?> -->
         <?php
         // Store the copied block markup in a PHP variable
         $pattern_content = '
