@@ -13,11 +13,7 @@ get_header(); ?>
 <div class="hero-container">
 
     <section class="hero" aria-labelledby="hero-heading">
-        <p>
-            <b><?php
-                echo date('F Y');
-                ?>:</b> This site is a working draft and a space for experimentation. Please pardon anything that appears broken or unfinished.
-        </p>
+
         <!-- Background Video -->
         <?php
         $hero_video = get_theme_mod('hero_video_url', get_template_directory_uri() . '/public/home-video.mp4');
@@ -51,6 +47,11 @@ get_header(); ?>
         <button class="replay-btn" aria-label="<?php _e('Replay typing animation', 'claire-portfolio'); ?>">
             <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span> <span><?php _e('REPLAY ANIMATION', 'claire-portfolio'); ?></span>
         </button>
+        <p>
+            <b><?php
+                echo date('F Y');
+                ?>:</b> This site is a working draft and a space for experimentation. Please pardon anything that appears broken or unfinished.
+        </p>
     </section>
 </div>
 
