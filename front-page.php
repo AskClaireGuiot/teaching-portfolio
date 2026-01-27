@@ -214,6 +214,11 @@ get_header(); ?>
         <p class="teaching-intro text-body-large">
             With a strong visual sensibility and a deep respect for content, I translate complex ideas into scalable and compelling experiences that meet real user needs. I'm a versatile, collaborative designer—just as comfortable crafting a museum exhibit as I am designing a web app.
         </p>
+        <div class="teaching-footer">
+            <a href="<?php the_permalink(236); ?>" class="text-link">
+                Learn more about my <strong>design work </strong>
+            </a>
+        </div>
         <?php
         // Store the copied block markup in a PHP variable
         $pattern_design = '
@@ -270,11 +275,7 @@ get_header(); ?>
         // Use do_blocks() to render the blocks
         echo do_blocks($pattern_design);
         ?>
-        <div class="teaching-footer">
-            <a href="<?php the_permalink(236); ?>" class="text-link">
-                Learn more about my <strong>design work </strong>
-            </a>
-        </div>
+
 
     </div>
 
