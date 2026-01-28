@@ -818,7 +818,11 @@ main li a {
 
 
 /* image gallery */
-.reacg-wrapper>button {
+ul.MuiImageList-root {
+  border-radius: 0;
+}
+
+.reacg-wrapper button {
   display: none;
 }
 
