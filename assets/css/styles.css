@@ -824,8 +824,8 @@ ul.MuiImageList-root {
 
 .MuiImageListItemBar-title {
   color: white;
-  overflow: visible;
-  white-space: wrap;
+  overflow: visible !important;
+  white-space: wrap !important;
 }
 
 .reacg-wrapper button {
