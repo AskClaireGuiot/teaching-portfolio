@@ -822,9 +822,16 @@ ul.MuiImageList-root {
   border-radius: 0;
 }
 
+.MuiImageListItemBar-title {
+  color: white;
+  overflow: visible;
+  white-space: wrap;
+}
+
 .reacg-wrapper button {
   display: none;
 }
+
 
 /* ==========================================================================
    CTA Section - Mobile First
