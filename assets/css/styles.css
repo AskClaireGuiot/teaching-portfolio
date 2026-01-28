@@ -816,6 +816,12 @@ main li a {
   background-color: var(--color-neutral);
 }
 
+
+/* image gallery */
+.reacg-wrapper>button {
+  display: none;
+}
+
 /* ==========================================================================
    CTA Section - Mobile First
    ========================================================================== */
