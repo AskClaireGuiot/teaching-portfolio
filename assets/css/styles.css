@@ -822,6 +822,10 @@ ul.MuiImageList-root {
   border-radius: 0;
 }
 
+ul.MuiImageList-root:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 .MuiImageListItemBar-title {
   color: white;
   overflow: visible !important;
