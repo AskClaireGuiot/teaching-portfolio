@@ -826,7 +826,7 @@ ul.MuiImageList-root {
   color: white;
   overflow: visible !important;
   white-space: wrap !important;
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
 }
 
