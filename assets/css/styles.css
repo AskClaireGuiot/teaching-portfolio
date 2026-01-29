@@ -834,7 +834,9 @@ ul.MuiImageList-root {
   display: none;
 }
 
-
+.yarl__slide_current {
+  margin-bottom: 40px;
+}
 
 /* ==========================================================================
    CTA Section - Mobile First
