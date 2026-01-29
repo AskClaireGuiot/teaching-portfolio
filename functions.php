@@ -301,7 +301,12 @@ function claire_portfolio_customize_register($wp_customize)
 }
 add_action('customize_register', 'claire_portfolio_customize_register');
 
-
+add_action('template_redirect', function () {
+    if (is_singular('reacg')) {
+        wp_redirect(home_url(), 301);
+        exit;
+    }
+});
 function my_html_shortcode($atts)
 {
     // Define default attributes and merge with user-defined attributes
