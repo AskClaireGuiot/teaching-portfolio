@@ -820,7 +820,6 @@ main li a {
 /* image gallery */
 ul.MuiImageList-root {
   border-radius: 0;
-  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .MuiImageListItemBar-title {
@@ -832,6 +831,10 @@ ul.MuiImageList-root {
 }
 
 .reacg-wrapper button {
+  display: none;
+}
+
+.yarl__thumbnails_wrapper button:last-child {
   display: none;
 }
 
