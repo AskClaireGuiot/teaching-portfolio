@@ -834,6 +834,10 @@ ul.MuiImageList-root {
   display: none;
 }
 
+.reacg-gallery-wrapper>div:nth-child(2) {
+  display: none !important;
+}
+
 .yarl__carousel {
   margin-bottom: 40px !important;
 }
