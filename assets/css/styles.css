@@ -826,6 +826,8 @@ ul.MuiImageList-root {
   color: white;
   overflow: visible !important;
   white-space: wrap !important;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
 }
 
 .reacg-wrapper button {
