@@ -835,7 +835,7 @@ ul.MuiImageList-root {
 }
 
 .yarl__slide_current {
-  margin-bottom: 40px;
+  margin-bottom: 40px !important;
 }
 
 /* ==========================================================================
