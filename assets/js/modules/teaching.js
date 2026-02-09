@@ -18,6 +18,7 @@ export class TeachingTOC {
         this.tocList = document.querySelector('.teaching-toc-list');
         this.currentActiveLink = null;
         this.lastAnnouncedSection = null;
+        this.previousWidth = window.innerWidth;
 
         this.init();
     }
@@ -91,18 +92,28 @@ export class TeachingTOC {
         // Handle window resize
         window.addEventListener('resize', debounce(() => {
             const icon = this.mobileToggle.querySelector('.material-symbols-outlined');
+            const currentWidth = window.innerWidth;
 
-            if (window.innerWidth > 768) {
-                // Desktop: always show list, hide toggle
-                this.mobileToggle.setAttribute('aria-expanded', 'false');
-                this.tocList.classList.remove('active');
-                if (icon) icon.textContent = 'keyboard_arrow_down';
-            } else {
-                // Mobile: reset to open state
-                this.mobileToggle.setAttribute('aria-expanded', 'true');
-                this.tocList.classList.add('active');
-                if (icon) icon.textContent = 'keyboard_arrow_up';
+            // Only update state if we're crossing the mobile/desktop breakpoint
+            // This prevents mobile browser chrome (address bar) from triggering unwanted state changes
+            const crossedBreakpoint = (this.previousWidth <= 768 && currentWidth > 768) ||
+                                     (this.previousWidth > 768 && currentWidth <= 768);
+
+            if (crossedBreakpoint) {
+                if (currentWidth > 768) {
+                    // Desktop: always show list, hide toggle
+                    this.mobileToggle.setAttribute('aria-expanded', 'false');
+                    this.tocList.classList.remove('active');
+                    if (icon) icon.textContent = 'keyboard_arrow_down';
+                } else {
+                    // Mobile: reset to open state only when transitioning from desktop
+                    this.mobileToggle.setAttribute('aria-expanded', 'true');
+                    this.tocList.classList.add('active');
+                    if (icon) icon.textContent = 'keyboard_arrow_up';
+                }
             }
+
+            this.previousWidth = currentWidth;
         }, 250));
     }
 
