@@ -32,7 +32,7 @@
             <p class="footer-disclaimer">
                 <strong>The content</strong> for this website is 88% original with 12% Microsoft Copilot for editing suggestions only.
                 <strong>The design</strong> was created manually using Figma (no AI).
-                <strong>The coding</strong> of this website is an experiment, it was 60% vibe-coded using same.new, with significant manual clean up and adaptations for WP integration. The clean up is ongoing.
+                <strong>The coding</strong> of this website is an experiment, it was 60% vibe-coded using same.new and Claude Code, with significant manual clean up and adaptations for WP integration. The clean up is ongoing.
             </p>
 
         </div>

@@ -830,9 +830,9 @@ ul.MuiImageList-root {
   font-weight: var(--font-weight-semibold);
 }
 
-.reacg-wrapper button {
+/* .reacg-wrapper button {
   display: none;
-}
+} */
 
 .reacg-gallery-wrapper>div:nth-child(2) {
   display: none !important;
