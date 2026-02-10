@@ -43,14 +43,14 @@ export class TeachingTOC {
     setupMobileNavigation() {
         if (!this.mobileToggle || !this.tocList) return;
 
-        // Set initial state - open by default on mobile
+        // Set initial state - collapsed by default on mobile to give users more reading space
         if (window.innerWidth <= 768) {
-            this.mobileToggle.setAttribute('aria-expanded', 'true');
-            this.tocList.classList.add('active');
+            this.mobileToggle.setAttribute('aria-expanded', 'false');
+            this.tocList.classList.remove('active');
 
-            // Set correct icon - up arrow when expanded
+            // Set correct icon - down arrow when collapsed
             const icon = this.mobileToggle.querySelector('.material-symbols-outlined');
-            if (icon) icon.textContent = 'keyboard_arrow_up';
+            if (icon) icon.textContent = 'keyboard_arrow_down';
         }
 
         // Handle mobile toggle
@@ -105,12 +105,9 @@ export class TeachingTOC {
                     this.mobileToggle.setAttribute('aria-expanded', 'false');
                     this.tocList.classList.remove('active');
                     if (icon) icon.textContent = 'keyboard_arrow_down';
-                } else {
-                    // Mobile: reset to open state only when transitioning from desktop
-                    this.mobileToggle.setAttribute('aria-expanded', 'true');
-                    this.tocList.classList.add('active');
-                    if (icon) icon.textContent = 'keyboard_arrow_up';
                 }
+                // Removed: automatic expansion when transitioning to mobile
+                // Let the user control the TOC state on mobile
             }
 
             this.previousWidth = currentWidth;
@@ -369,14 +366,15 @@ export class TeachingTOC {
             // Announce to screen readers that the current section has changed
             this.announceCurrentSection(sectionId);
 
-            // Ensure active link is visible in mobile TOC (scroll into view if needed)
-            if (window.innerWidth <= 768 && this.isTOCExpanded()) {
-                activeLink.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'nearest',
-                    inline: 'nearest'
-                });
-            }
+            // Disabled: scrollIntoView can cause issues on iOS browsers
+            // and may interfere with user scrolling behavior
+            // if (window.innerWidth <= 768 && this.isTOCExpanded()) {
+            //     activeLink.scrollIntoView({
+            //         behavior: 'smooth',
+            //         block: 'nearest',
+            //         inline: 'nearest'
+            //     });
+            // }
         }
     }
 
