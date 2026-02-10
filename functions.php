@@ -56,6 +56,9 @@ function claire_portfolio_scripts()
 {
     $theme_version = wp_get_theme()->get('Version');
 
+    // Use timestamp for cache busting during development
+    $asset_version = $theme_version . '.' . time();
+
     // Enqueue Google Fonts
     wp_enqueue_style(
         'claire-portfolio-fonts',
@@ -77,7 +80,7 @@ function claire_portfolio_scripts()
         'claire-portfolio-style',
         get_template_directory_uri() . '/assets/css/styles.css',
         array('claire-portfolio-fonts', 'claire-portfolio-material-icons'),
-        $theme_version
+        $asset_version
     );
 
     // Enqueue main JavaScript modules
@@ -85,7 +88,7 @@ function claire_portfolio_scripts()
         'claire-portfolio-main',
         get_template_directory_uri() . '/assets/js/main.js',
         array(),
-        $theme_version,
+        $asset_version,
         true
     );
 
