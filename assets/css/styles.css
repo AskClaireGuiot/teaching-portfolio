@@ -1147,8 +1147,9 @@ ul.MuiImageList-root {
 .teaching-toc-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--spacing-sm);
+  justify-content: flex-end;
+  gap: 16px;
+  margin-bottom: 0;
 }
 
 .teaching-toc-header h2 {
@@ -1166,12 +1167,13 @@ ul.MuiImageList-root {
 
 .teaching-toc-list li {
   margin: 0 0 0 0;
-  padding: 0 var(--spacing-sm);
 }
 
 .teaching-toc-list ul {
-  padding: 0 0 0 var(--spacing-xl);
+  padding: 0 0 0 16px;
   margin: 0;
+  list-style-type: none;
+  background-color: initial;
 }
 
 .teaching-toc-list ul li {
@@ -1378,7 +1380,9 @@ ul.MuiImageList-root {
   margin: initial;
 }
 
+
 /* Responsive Design */
+/* Last updated: 2026-02-12 - Fixed mobile menu overlay behavior */
 @media (max-width: 768px) {
 
   /* Mobile layout - stack TOC above content */
@@ -1410,11 +1414,12 @@ ul.MuiImageList-root {
   }
 
   .teaching-toc-container {
-    padding: var(--spacing-md);
+    position: relative;
+    /* Position context for absolutely positioned menu */
   }
 
-  .teaching-toc-header {
-    margin-bottom: var(--spacing-xs);
+  .teaching-toc-container {
+    padding: var(--spacing-md);
   }
 
   .teaching-toc-list {
@@ -1432,11 +1437,25 @@ ul.MuiImageList-root {
   }
 
   .teaching-toc-list.active {
+    position: absolute;
+    /* Take out of flow to overlay content instead of pushing it down */
+    top: 100%;
+    /* Position below the TOC header */
+    left: 0;
+    right: 0;
     max-height: 80vh;
     /* Allow up to 80% of viewport height for navigation items */
     opacity: 1;
     overflow-y: auto;
     /* Add scrolling if content exceeds available space */
+    margin-top: 0;
+    padding-top: var(--spacing-md);
+    background-color: #f9f9f9;
+    /* Solid background to overlay content */
+    z-index: 50;
+    /* Ensure menu appears above content */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Add shadow for depth */
   }
 
   /* .teaching-toc-list li {
@@ -1468,6 +1487,7 @@ ul.MuiImageList-root {
     min-height: 44px;
     /* Minimum touch target size for mobile accessibility */
   }
+
 
   /*
   .teaching-content {
@@ -1719,6 +1739,10 @@ figcaption {
     position: relative;
   }
 
+  .teaching-toc-header {
+    justify-content: space-between;
+  }
+
   /* Progress indicator */
   .teaching-toc-progress {
     position: absolute;
@@ -1744,7 +1768,7 @@ figcaption {
   }
 
   .teaching-toc-header {
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: 20px;
     /* position: relative; */
   }
 
@@ -1776,18 +1800,6 @@ figcaption {
     transition: all var(--transition-fast);
     position: relative;
     padding: var(--spacing-xs) var(--spacing-md);
-  }
-
-  /* Enhanced active state with position indicator */
-
-  .teaching-toc-link.active::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background-color: var(--color-coral);
   }
 
   .mobile-toc-toggle {

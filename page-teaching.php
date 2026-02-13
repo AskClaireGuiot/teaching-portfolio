@@ -32,7 +32,7 @@ get_header(); ?>
     <nav class="teaching-toc" aria-label="On this page">
         <div class="teaching-toc-container">
             <div class="teaching-toc-header">
-                <h2 class="text-heading-4">On this page:</h2>
+                <h2 class="text-heading-4">On this page</h2>
                 <button class="mobile-toc-toggle" aria-expanded="false" aria-controls="teaching-toc-list">
                     <span class="material-symbols-outlined">
                         keyboard_arrow_down

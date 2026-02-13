@@ -3,13 +3,13 @@
  * Coordinates all modules and initializes the application
  */
 
-// Import all modules
-import { MobileNavigation, HeaderScrollEffect } from './modules/navigation.js';
-import { TypingAnimation } from './modules/animation.js';
-import { SmoothScrolling, AccessibilityEnhancements, ViewportHandler } from './modules/accessibility.js';
-import { MotionController, VideoOptimizer, VideoInitializer } from './modules/video.js';
-import { TeachingPageManager } from './modules/teaching.js';
-import { handleError } from './modules/utils.js';
+// Import all modules (with cache busting version)
+import { MobileNavigation, HeaderScrollEffect } from './modules/navigation.js?v=2.0.6';
+import { TypingAnimation } from './modules/animation.js?v=2.0.6';
+import { SmoothScrolling, AccessibilityEnhancements, ViewportHandler } from './modules/accessibility.js?v=2.0.6';
+import { MotionController, VideoOptimizer, VideoInitializer } from './modules/video.js?v=2.0.6';
+import { TeachingPageManager } from './modules/teaching.js?v=2.0.6';
+import { handleError } from './modules/utils.js?v=2.0.6';
 
 /**
  * Main Portfolio Application

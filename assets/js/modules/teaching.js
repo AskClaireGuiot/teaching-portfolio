@@ -11,49 +11,90 @@ import { debounce } from './utils.js';
  */
 export class TeachingTOC {
     constructor() {
-        this.toc = document.querySelector('.teaching-toc');
-        this.tocLinks = document.querySelectorAll('.teaching-toc-link');
-        this.sections = document.querySelectorAll('.teaching-toc-section');
-        this.mobileToggle = document.querySelector('.mobile-toc-toggle');
-        this.tocList = document.querySelector('.teaching-toc-list');
-        this.currentActiveLink = null;
-        this.lastAnnouncedSection = null;
-        this.previousWidth = window.innerWidth;
+        console.log('[TOC] ===== CONSTRUCTOR CALLED =====');
+        try {
+            this.toc = document.querySelector('.teaching-toc');
+            this.tocLinks = document.querySelectorAll('.teaching-toc-link');
+            this.mobileToggle = document.querySelector('.mobile-toc-toggle');
+            this.tocList = document.querySelector('.teaching-toc-list');
+            this.currentActiveLink = null;
+            this.lastAnnouncedSection = null;
 
-        this.init();
+            console.log('[TOC Constructor] tocLinks found:', this.tocLinks.length);
+            console.log('[TOC Constructor] mobileToggle:', !!this.mobileToggle);
+            console.log('[TOC Constructor] tocList:', !!this.tocList);
+
+            // Get sections from the TOC links' href attributes
+            this.sections = this.getSectionsFromLinks();
+
+            console.log('[TOC Constructor] sections found:', this.sections.length);
+
+            this.init();
+        } catch (error) {
+            console.error('[TOC Constructor] ERROR:', error);
+        }
+    }
+
+    getSectionsFromLinks() {
+        const sections = [];
+        for (const link of this.tocLinks) {
+            const href = link.getAttribute('href');
+            console.log('[getSectionsFromLinks] Checking link href:', href);
+            if (href && href.startsWith('#')) {
+                const sectionId = href.substring(1);
+                const section = document.getElementById(sectionId);
+                console.log('[getSectionsFromLinks] Section ID:', sectionId, 'Found:', !!section);
+                if (section) {
+                    sections.push(section);
+                }
+            }
+        }
+        console.log('[getSectionsFromLinks] Total sections:', sections.length);
+        return sections;
     }
 
     init() {
-        if (!this.toc || this.sections.length === 0) {
-            console.warn('TOC or sections not found. TOC:', !!this.toc, 'Sections:', this.sections.length);
+        console.log('[TOC init] Starting - toc:', !!this.toc, 'sections:', this.sections.length);
+
+        if (!this.toc) {
+            console.warn('[TOC init] EARLY RETURN - No TOC element found');
             return;
         }
 
-
-
+        console.log('[TOC init] Setting up mobile navigation...');
         this.setupMobileNavigation();
-        this.setupSmoothScrolling();
-        this.setupScrollSpy();
-        this.setupTOCKeyboardNavigation();
 
-        // Set initial active state
-        this.updateActiveLink();
+        // Only set up scroll features if sections exist
+        if (this.sections.length > 0) {
+            console.log('[TOC init] Setting up scroll features...');
+            this.setupSmoothScrolling();
+            this.setupScrollSpy();
+            this.setupTOCKeyboardNavigation();
+            this.updateActiveLink();
+        } else {
+            console.warn('[TOC init] No sections found - scroll features disabled');
+        }
     }
 
     setupMobileNavigation() {
         if (!this.mobileToggle || !this.tocList) return;
 
-        // Set initial state - collapsed by default on mobile to give users more reading space
-        if (window.innerWidth <= 768) {
-            this.mobileToggle.setAttribute('aria-expanded', 'false');
-            this.tocList.classList.remove('active');
+        console.log('[TOC] Setup - Width:', window.innerWidth, 'UserAgent:', navigator.userAgent);
+        console.log('[TOC] Initial classes:', this.tocList.className);
 
-            // Set correct icon - down arrow when collapsed
-            const icon = this.mobileToggle.querySelector('.material-symbols-outlined');
-            if (icon) icon.textContent = 'keyboard_arrow_down';
+        // Set initial state - collapsed by default on mobile
+        if (window.innerWidth <= 768) {
+            console.log('[TOC] Collapsing on mobile');
+            this.collapseTOC();
+
+            // Double-check after a moment
+            setTimeout(() => {
+                console.log('[TOC] After 100ms - classes:', this.tocList.className);
+                console.log('[TOC] aria-expanded:', this.mobileToggle.getAttribute('aria-expanded'));
+            }, 100);
         }
 
-        // Handle mobile toggle
+        // Handle mobile toggle click
         this.mobileToggle.addEventListener('click', () => {
             this.toggleTOC();
         });
@@ -89,29 +130,7 @@ export class TeachingTOC {
             });
         }
 
-        // Handle window resize
-        window.addEventListener('resize', debounce(() => {
-            const icon = this.mobileToggle.querySelector('.material-symbols-outlined');
-            const currentWidth = window.innerWidth;
-
-            // Only update state if we're crossing the mobile/desktop breakpoint
-            // This prevents mobile browser chrome (address bar) from triggering unwanted state changes
-            const crossedBreakpoint = (this.previousWidth <= 768 && currentWidth > 768) ||
-                                     (this.previousWidth > 768 && currentWidth <= 768);
-
-            if (crossedBreakpoint) {
-                if (currentWidth > 768) {
-                    // Desktop: always show list, hide toggle
-                    this.mobileToggle.setAttribute('aria-expanded', 'false');
-                    this.tocList.classList.remove('active');
-                    if (icon) icon.textContent = 'keyboard_arrow_down';
-                }
-                // Removed: automatic expansion when transitioning to mobile
-                // Let the user control the TOC state on mobile
-            }
-
-            this.previousWidth = currentWidth;
-        }, 250));
+        // REMOVED: All resize handling - let's see if the issue persists without it
     }
 
     /**
@@ -138,6 +157,9 @@ export class TeachingTOC {
      * Collapse TOC
      */
     collapseTOC() {
+        console.log('[TOC] collapseTOC called');
+        console.log('[TOC] Before collapse - classes:', this.tocList.className);
+
         this.mobileToggle.setAttribute('aria-expanded', 'false');
         this.tocList.classList.remove('active');
 
@@ -146,6 +168,7 @@ export class TeachingTOC {
             icon.textContent = 'keyboard_arrow_down';
         }
 
+        console.log('[TOC] After collapse - classes:', this.tocList.className);
         this.announceStateChange(false);
     }
 
@@ -266,7 +289,7 @@ export class TeachingTOC {
                 if (targetSection) {
                     const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
                     // For sticky TOC layout, use optimized offset based on screen size
-                    const additionalOffset = window.innerWidth > 768 ? 64 : 460; // Increased mobile offset to position h2 below collapsed TOC
+                    const additionalOffset = window.innerWidth > 768 ? 60 : 580; // Increased mobile offset to position h2 below collapsed TOC
                     const offset = headerHeight + additionalOffset;
                     const targetPosition = targetSection.offsetTop - offset;
 
@@ -435,7 +458,9 @@ export class TeachingPageManager {
         }
 
         console.log('TeachingPageManager: Initializing TOC');
+        console.log('TeachingPageManager: About to create TeachingTOC instance...');
         this.toc = new TeachingTOC();
+        console.log('TeachingPageManager: TeachingTOC instance created:', !!this.toc);
 
         // Set up any additional teaching page functionality
         this.setupPageEnhancements();
