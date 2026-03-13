@@ -14,14 +14,14 @@ export class TypingAnimation {
         this.cursor = document.querySelector('.hero-cursor');
         this.heroContainer = document.querySelector('.hero-text');
         this.replayBtn = document.querySelector('.replay-btn');
-        this.heroVideo = document.querySelector('.hero-video');
+        // this.heroVideo = document.querySelector('.hero-video');
         this.roles = ['n instructor', ' designer', ' developer'];
         this.currentRoleIndex = 0;
         this.typeSpeed = 50;
         this.deleteSpeed = 30;
         this.startDelay = 1000;
-        this.pauseDelay = 2500;
-        this.finalPauseDelay = 4000;
+        this.pauseDelay = 1500;
+        // this.finalPauseDelay = 4000;
         this.isAnimating = false;
 
         // Device and performance detection
@@ -99,48 +99,60 @@ export class TypingAnimation {
         }
     }
 
-init() {
-    if (!this.heroText || prefersReducedMotion()) {
-        if (this.heroText) {
-            const lastRole = this.roles[this.roles.length - 1];
-            this.heroText.innerHTML = `${this.getBaseText()}<span class="scratched-out">${lastRole}${this.getScratchSVG()}${this.getHandwrittenSVG()}</span>`;
+    init() {
+        if (!this.heroText || prefersReducedMotion()) {
+            if (this.heroText) {
+                const lastRole = this.roles[this.roles.length - 1];
+                this.heroText.innerHTML = `${this.getBaseText()}<span class="scratched-out">${lastRole}${this.getScratchSVG()}${this.getHandwrittenSVG()}</span>`;
+            }
+            return;
         }
-        return;
-    }
 
-    // 👇 Add this: clear initial text content
-    this.heroText.textContent = '';
+        // 👇 Add this: clear initial text content
+        this.heroText.textContent = '';
 
-    if (this.cursor) {
-        this.cursor.style.visibility = 'hidden'; // Hide cursor initially
-    }
-
-    if (this.replayBtn) {
-        this.replayBtn.addEventListener('click', () => this.replayAnimation());
-    }
-
-    this.initVideo();
-
-    // Make test function globally accessible for debugging
-    window.testAnimation = () => this.testAnimationSequence();
-
-    setTimeout(() => this.startAnimation(), this.startDelay);
-
-    window.addEventListener('resize', debounce(() => {
-        if (!this.isAnimating) {
-            this.updateTextFormat();
+        if (this.cursor) {
+            this.cursor.style.visibility = 'hidden'; // Hide cursor initially
         }
-    }, 250));
-}
+
+        if (this.replayBtn) {
+            this.replayBtn.addEventListener('click', () => this.replayAnimation());
+        }
+
+        this._timers = [];
+
+        this.initVideo();
+
+        // Make test function globally accessible for debugging
+        window.testAnimation = () => this.testAnimationSequence();
+
+        setTimeout(() => this.startAnimation(), this.startDelay);
+
+        window.addEventListener('resize', debounce(() => {
+            if (!this.isAnimating) {
+                this.updateTextFormat();
+            }
+        }, 250));
+    }
 
 
     initVideo() {
         // Video initialization logic will be handled by video module
     }
 
+    cancelAnimation() {
+        for (const id of this._timers) {
+            clearInterval(id);
+            clearTimeout(id);
+        }
+        this._timers = [];
+        this.isAnimating = false;
+    }
+
     async startAnimation() {
         if (this.isAnimating) return;
 
+        this._timers = [];
         this.isAnimating = true;
         this.currentRoleIndex = 0;
 
@@ -153,12 +165,16 @@ init() {
             await this.pause(this.pauseDelay);
         }
 
-        await this.pause(600);
+        // await this.pause(400);
         await this.scratchOutRole();
-        await this.pause(150);
+        // await this.pause(100);
         await this.writeHandwrittenHuman();
 
         this.isAnimating = false;
+        if (this.replayBtn) {
+            this.replayBtn.style.visibility = 'visible';
+            this.replayBtn.style.opacity = '1';
+        }
     }
 
     typeText(text) {
@@ -175,6 +191,7 @@ init() {
                     resolve();
                 }
             }, this.typeSpeed);
+            this._timers.push(typeTimer);
         });
     }
 
@@ -192,6 +209,7 @@ init() {
                     resolve();
                 }
             }, this.typeSpeed);
+            this._timers.push(typeTimer);
         });
     }
 
@@ -208,12 +226,14 @@ init() {
                     resolve();
                 }
             }, this.deleteSpeed);
+            this._timers.push(deleteTimer);
         });
     }
 
     pause(duration) {
         return new Promise((resolve) => {
-            setTimeout(resolve, duration);
+            const id = setTimeout(resolve, duration);
+            this._timers.push(id);
         });
     }
 
@@ -241,7 +261,7 @@ init() {
             if (addedSpan) {
                 addedSpan.appendChild(scratchContainer);
 
-                setTimeout(() => {
+                this._timers.push(setTimeout(() => {
                     const scratchPath = scratchContainer.querySelector('.scratch-path');
                     if (scratchPath) {
                         const pathLength = scratchPath.getTotalLength();
@@ -250,13 +270,13 @@ init() {
 
                         scratchPath.getBoundingClientRect();
 
-                        setTimeout(() => {
+                        this._timers.push(setTimeout(() => {
                             scratchPath.style.transition = 'stroke-dashoffset 0.4s ease-in-out';
                             scratchPath.style.strokeDashoffset = '0';
-                        }, 50);
+                        }, 50));
                     }
-                    setTimeout(resolve, 500);
-                }, 100);
+                    this._timers.push(setTimeout(resolve, 500));
+                }, 100));
             }
         });
     }
@@ -280,9 +300,9 @@ init() {
                 this.heroText.appendChild(svgContainer);
             }
 
-            setTimeout(() => {
+            this._timers.push(setTimeout(() => {
                 this.animateHandwriting(svgContainer, resolve);
-            }, 200);
+            }, 200));
         });
     }
 
@@ -356,14 +376,14 @@ init() {
                 path.style.strokeDashoffset = '0';
 
                 // Wait for this path to complete before starting the next - natural flow
-                setTimeout(() => {
+                this._timers.push(setTimeout(() => {
                     currentPathIndex++;
                     animateNextPath();
-                }, duration * 1000 + 60); // Comfortable buffer for natural timing
+                }, duration * 1000 + 60)); // Comfortable buffer for natural timing
             };
 
             // Start animation after a brief delay - natural timing
-            setTimeout(animateNextPath, 100);
+            this._timers.push(setTimeout(animateNextPath, 100));
 
         } catch (error) {
             console.error('Error animating handwriting:', error);
@@ -417,7 +437,7 @@ init() {
     }
 
     replayAnimation() {
-        if (this.isAnimating) return;
+        this.cancelAnimation();
 
         const existingSVG = this.heroContainer.querySelector('.handwritten-svg-container');
         if (existingSVG) {

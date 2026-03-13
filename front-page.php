@@ -10,31 +10,11 @@
 get_header(); ?>
 
 <!-- Hero Section -->
-<div class="hero-container">
 
-    <section class="hero" aria-labelledby="hero-heading">
 
-        <!-- Background Video -->
-        <?php
-        $hero_video = get_theme_mod('hero_video_url', get_template_directory_uri() . '/public/home-video.mp4');
-        if ($hero_video) :
-        ?>
-            <video
-                class="hero-video"
-                autoplay
-                muted
-                poster="<?php echo get_template_directory_uri() . '/public/home-video-poster.jpg' ?>"
-                playsinline
-                aria-hidden="true"
-                preload="metadata">
-                <source src="<?php echo esc_url($hero_video); ?>" type="video/mp4">
-                <!-- Fallback for browsers that don't support video -->
-                <?php _e('Your browser does not support the video tag.', 'claire-portfolio'); ?>
-            </video>
-        <?php endif; ?>
-
-        <!-- Video Loading Placeholder -->
-        <div class="hero-video-placeholder" aria-hidden="true"></div>
+<section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-container">
+        <img class="hero-image fade-onload" src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>" width="300" height="300">
 
         <h1 id="hero-heading" class="hero-text text-heading-1">
             <?php
@@ -44,20 +24,15 @@ get_header(); ?>
             <span class="hero-intro"><?php echo esc_html($hero_title); ?></span>
             <span class="hero-cursor" aria-hidden="true">|</span>
         </h1>
-        <div class="hero-button">
 
-            <button class="replay-btn" aria-label="<?php _e('Replay typing animation', 'claire-portfolio'); ?>">
-                <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span> <span><?php _e('REPLAY ANIMATION', 'claire-portfolio'); ?></span>
-            </button>
-            <p>
-                <b><?php
-                    echo date('F Y');
-                    ?>:</b> This site is a working draft and a space for experimentation. Please pardon anything that appears broken or unfinished.
-            </p>
-        </div>
 
-    </section>
-</div>
+        <button class="replay-btn" aria-label="<?php _e('Replay typing animation', 'claire-portfolio'); ?>">
+            <span class="material-symbols-outlined" aria-hidden="true">play_arrow</span> <span><?php _e('REPLAY ANIMATION', 'claire-portfolio'); ?></span>
+        </button>
+    </div>
+
+</section>
+
 
 <!-- Mission Statement Section -->
 <section class="mission" aria-labelledby="mission-heading">

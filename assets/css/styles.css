@@ -532,71 +532,63 @@ main li a {
    Hero Section - Mobile First
    ========================================================================== */
 
-.hero-container {
-  /* background-image: url("../../public/test.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
-}
-
 .hero {
-  display: flex;
+  /* display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  gap: var(--spacing-4xl);
+  gap: var(--spacing-4xl); */
   /* min-height: calc(100vh - var(--header-height)); */
   padding: var(--spacing-3xl) var(--spacing-md);
   position: relative;
   max-width: var(--container-max-width);
   margin: 0 auto;
-  width: 100%;
 }
 
-/* Hero Background Video */
-.hero-video {
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 55%;
-  /* Fixed height for consistent coverage */
-  object-fit: contain;
-  pointer-events: none;
-  /* Ensure video doesn't interfere with interactions */
-  transition: opacity var(--transition-normal);
-  display: none;
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
 }
 
-/* Video Loading Placeholder */
-.hero-video-placeholder {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60%;
-  /* background: linear-gradient(
-    135deg,
-    rgba(114, 180, 178, 0.1) 0%,
-    rgba(255, 107, 107, 0.1) 100%
-  ); */
-  z-index: -2;
-  /* Behind video */
-  opacity: 1;
-  transition: opacity var(--transition-slow);
+.hero .hero-image {
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  border: 8px solid #ececec;
+  margin-bottom: 40px;
 }
 
-/* Hide placeholder when video is loaded */
-.hero-video.loaded+.hero-video-placeholder {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  /* Start from transparent */
+  to {
+    opacity: 1;
+  }
+
+  /* End at fully opaque */
+}
+
+.fade-onload {
   opacity: 0;
+  /* Ensures the image is initially hidden before the animation runs */
+  animation: fadeIn 1500ms ease-in-out forwards;
+  /* Apply the animation: name, duration, timing, and keep final state */
 }
 
 .hero-text {
   margin: 0 auto;
   text-align: center;
-  max-width: 800px;
+  /* max-width: 800px; */
   font-family: var(--font-family-tertiary);
   font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-3xl);
+  height: 200px;
 }
 
 /* Allow line breaks in hero text on mobile only */
@@ -684,8 +676,30 @@ main li a {
   stroke-dashoffset: 1000;
 }
 
-.hero-button {
-  padding-top: 160px;
+/* Special positioning and styling for replay button */
+.replay-btn {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  font-family: var(--font-family-utility);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 50;
+  background: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 0;
+  color: #000000;
+}
+
+
+.replay-btn .material-icons {
+  margin-right: 4px;
 }
 
 /* ==========================================================================
@@ -992,25 +1006,7 @@ ul.MuiImageList-root {
   color: var(--color-black);
 }
 
-/* Special positioning and styling for replay button */
-.replay-btn {
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  font-family: var(--font-family-utility);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  z-index: 50;
-  background: var(--color-white);
-  padding: var(--spacing-sm) var(--spacing-md);
-}
 
-.replay-btn .material-icons {
-  margin-right: 4px;
-}
 
 /* Case study template system removed - unused */
 
@@ -1890,6 +1886,7 @@ figcaption {
 
   .replay-btn {
     margin: 0;
+
   }
 
   .replay-btn:hover {

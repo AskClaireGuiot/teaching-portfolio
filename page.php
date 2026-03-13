@@ -14,8 +14,9 @@ get_header(); ?>
     <section class="page-hero">
         <div class="page-hero-container">
             <h1 class="text-heading-1">
-                Design Work
+                Design Portfolio
             </h1>
+            <p>A curated, visual collection of my design work, showcasing my problem-solving skills, creative process, and technical proficiency.</p>
         </div>
     </section>
 
